@@ -17,7 +17,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
-// Smooth Scroll for anchor links (if browser doesn't support css scroll-behavior)
+// Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -39,9 +39,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Simple Fade In Animation on Scroll
 const sections = document.querySelectorAll('.section');
-
 const observerOptions = {
-    root: null,
     threshold: 0.1,
     rootMargin: "0px"
 };
@@ -61,4 +59,117 @@ sections.forEach(section => {
     section.style.transform = "translateY(30px)";
     section.style.transition = "opacity 0.8s ease-out, transform 0.8s ease-out";
     observer.observe(section);
+});
+
+// Carousel Logic (Auto Scroll Loop)
+const track = document.querySelector('.testimonial-track');
+const slides = Array.from(track.children);
+const nextButton = document.querySelector('.next-btn');
+const prevButton = document.querySelector('.prev-btn');
+const dotsNav = document.querySelector('.carousel-nav');
+const dots = Array.from(dotsNav.children);
+
+const slideWidth = slides[0].getBoundingClientRect().width;
+
+// Arrange the slides next to one another
+const setSlidePosition = (slide, index) => {
+    slide.style.left = slideWidth * index + 'px';
+};
+slides.forEach(setSlidePosition);
+
+const moveToSlide = (track, currentSlide, targetSlide) => {
+    track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+    currentSlide.classList.remove('current-slide');
+    targetSlide.classList.add('current-slide');
+
+    // Update opacity
+    currentSlide.style.opacity = '0';
+    targetSlide.style.opacity = '1';
+};
+
+const updateDots = (currentDot, targetDot) => {
+    currentDot.classList.remove('current-slide');
+    targetDot.classList.add('current-slide');
+};
+
+const moveNext = () => {
+    const currentSlide = track.querySelector('.current-slide');
+    let nextSlide = currentSlide.nextElementSibling;
+    const currentDot = dotsNav.querySelector('.current-slide');
+    let nextDot = currentDot.nextElementSibling;
+
+    // Loop back to start if at end
+    if (!nextSlide) {
+        nextSlide = slides[0];
+        nextDot = dots[0];
+    }
+
+    moveToSlide(track, currentSlide, nextSlide);
+    updateDots(currentDot, nextDot);
+};
+
+const movePrev = () => {
+    const currentSlide = track.querySelector('.current-slide');
+    let prevSlide = currentSlide.previousElementSibling;
+    const currentDot = dotsNav.querySelector('.current-slide');
+    let prevDot = currentDot.previousElementSibling;
+
+    // Loop to end if at start
+    if (!prevSlide) {
+        prevSlide = slides[slides.length - 1];
+        prevDot = dots[dots.length - 1];
+    }
+
+    moveToSlide(track, currentSlide, prevSlide);
+    updateDots(currentDot, prevDot);
+};
+
+// Next Button
+nextButton.addEventListener('click', () => {
+    moveNext();
+    resetAutoScroll();
+});
+
+// Prev Button
+prevButton.addEventListener('click', () => {
+    movePrev();
+    resetAutoScroll();
+});
+
+// Dot Indicator Click
+dotsNav.addEventListener('click', e => {
+    const targetDot = e.target.closest('button');
+
+    if (!targetDot) return;
+
+    const currentSlide = track.querySelector('.current-slide');
+    const currentDot = dotsNav.querySelector('.current-slide');
+    const targetIndex = dots.findIndex(dot => dot === targetDot);
+    const targetSlide = slides[targetIndex];
+
+    moveToSlide(track, currentSlide, targetSlide);
+    updateDots(currentDot, targetDot);
+    resetAutoScroll();
+});
+
+// Auto Scroll Interval
+let autoScrollInterval = setInterval(moveNext, 3000); // Scroll every 3 seconds
+
+const resetAutoScroll = () => {
+    clearInterval(autoScrollInterval);
+    autoScrollInterval = setInterval(moveNext, 3000);
+};
+
+// Handle Window Resize
+window.addEventListener('resize', () => {
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    slides.forEach((slide, index) => {
+        slide.style.left = slideWidth * index + 'px';
+    });
+
+    // Re-center current slide
+    const currentSlide = track.querySelector('.current-slide');
+    track.style.transform = 'translateX(-' + currentSlide.style.left + ')';
+
+    // Disable transition temporarily to avoid "jumping" effect (optional, keeping simple for now)
 });
