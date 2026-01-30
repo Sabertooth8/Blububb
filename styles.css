@@ -9,7 +9,7 @@
     --white: #FFFFFF;
     --shadow-soft: 0 10px 30px rgba(227, 139, 158, 0.2);
     --shadow-card: 0 8px 20px rgba(0, 0, 0, 0.05);
-    
+
     --font-heading: 'Fredoka', sans-serif;
     --font-body: 'Poppins', sans-serif;
 }
@@ -32,7 +32,11 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
     font-family: var(--font-heading);
     color: var(--deep-pink);
     font-weight: 600;
@@ -127,7 +131,7 @@ ul {
     display: flex;
     align-items: center;
     background: radial-gradient(circle at top right, var(--pastel-blue) 0%, transparent 40%),
-                radial-gradient(circle at bottom left, var(--soft-pink) 0%, transparent 40%);
+        radial-gradient(circle at bottom left, var(--soft-pink) 0%, transparent 40%);
 }
 
 .hero-container {
@@ -209,9 +213,17 @@ ul {
 }
 
 @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0px); }
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
 }
 
 .floating-badge {
@@ -284,17 +296,27 @@ ul {
     transform: translateY(-10px);
 }
 
-.card-image {
-    height: 200px;
+/* Card Images */
+.card-image-wrapper {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--white);
+    background: var(--bg-cream);
 }
 
-.color-pink { background: var(--soft-pink); }
-.color-blue { background: var(--pastel-blue); color: var(--deep-pink); }
-.color-yellow { background: var(--pastel-yellow); color: var(--text-primary); }
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-img {
+    transform: scale(1.1);
+}
 
 .card-body {
     padding: 20px;
@@ -311,6 +333,174 @@ ul {
     margin-bottom: 10px;
     display: block;
 }
+
+/* Brand Summary (About) */
+.brand-summary {
+    background: var(--white);
+    padding: 60px 0;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.summary-item {
+    padding: 20px;
+}
+
+.summary-item i {
+    color: var(--deep-pink);
+    margin-bottom: 20px;
+}
+
+.summary-item h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.summary-item p {
+    color: var(--text-secondary);
+}
+
+/* Business Profile (Cindy) */
+.profile {
+    background: var(--bg-cream);
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.profile-text {
+    flex: 1;
+}
+
+.profile-text h2 {
+    margin-bottom: 10px;
+}
+
+.profile-text h3 {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.profile-text .lead {
+    font-weight: 600;
+    color: var(--deep-pink);
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.profile-text p {
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+}
+
+.profile-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.owner-photo-placeholder {
+    width: 300px;
+    height: 300px;
+    background: var(--soft-pink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    border: 10px solid var(--white);
+    box-shadow: var(--shadow-card);
+}
+
+/* Market Analysis */
+.market-analysis {
+    background: var(--white);
+}
+
+.analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.analysis-card {
+    padding: 40px 30px;
+    border-radius: 40px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.analysis-card:hover {
+    transform: translateY(-10px);
+}
+
+.analysis-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.analysis-card.color-pink h3 {
+    color: #D14D72;
+}
+
+.analysis-card.color-blue h3 {
+    color: #5DA7DB;
+}
+
+.analysis-card.color-yellow h3 {
+    color: #D4AC0D;
+}
+
+
+/* Marketing Strategy (Socials) */
+.marketing {
+    background: var(--bg-cream);
+}
+
+.marketing h2 {
+    margin-bottom: 20px;
+}
+
+.social-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.social-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 30px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.3s;
+    color: var(--text-primary);
+}
+
+.social-card i {
+    color: var(--deep-pink);
+}
+
+.social-card:hover {
+    transform: translateY(-5px);
+    color: var(--deep-pink);
+}
+
 
 .desc {
     color: var(--text-secondary);
@@ -358,8 +548,10 @@ ul {
 
 .menu-icon {
     font-size: 2.5rem;
-    color: var(--pastel-blue); /* Using contrasting color for icon */
-    color: #8ECDDD; /* Slightly darker pastel blue for visibility */
+    color: var(--pastel-blue);
+    /* Using contrasting color for icon */
+    color: #8ECDDD;
+    /* Slightly darker pastel blue for visibility */
     margin-bottom: 10px;
 }
 
@@ -372,7 +564,8 @@ ul {
 .why-us {
     background: var(--white);
     border-radius: 50px;
-    margin: 40px 20px; /* inset look */
+    margin: 40px 20px;
+    /* inset look */
 }
 
 .why-us h2 {
@@ -414,10 +607,13 @@ ul {
     gap: 30px;
     overflow-x: auto;
     padding-bottom: 20px;
-    scrollbar-width: none; /* Hide scrollbar Firefox */
+    scrollbar-width: none;
+    /* Hide scrollbar Firefox */
 }
+
 .testimonial-slider::-webkit-scrollbar {
-    display: none; /* Hide scrollbar Chrome */
+    display: none;
+    /* Hide scrollbar Chrome */
 }
 
 .testimonial-card {
@@ -529,7 +725,8 @@ footer {
     }
 
     .nav-links {
-        display: none; /* Simplified for now, JS toggles */
+        display: none;
+        /* Simplified for now, JS toggles */
         position: absolute;
         top: 70px;
         left: 0;
@@ -537,9 +734,9 @@ footer {
         background: var(--white);
         flex-direction: column;
         padding: 20px;
-        box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
     }
-    
+
     .nav-links.active {
         display: flex;
     }
@@ -548,7 +745,9 @@ footer {
         display: block;
     }
 
-    .badge-1, .badge-2 {
-        display: none; /* Hide floating badges on mobile to clear clutter */
+    .badge-1,
+    .badge-2 {
+        display: none;
+        /* Hide floating badges on mobile to clear clutter */
     }
 }
