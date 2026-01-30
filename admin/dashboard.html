@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Blububb Admin</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-logo">
+                <span class="logo-icon">🧁</span>
+                <h2>Blububb</h2>
+            </div>
+
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="dashboard.html" class="active">
+                        <i class="fas fa-chart-pie"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="products.html">
+                        <i class="fas fa-box"></i>
+                        Produk
+                    </a>
+                </li>
+                <li>
+                    <a href="reports.html">
+                        <i class="fas fa-chart-line"></i>
+                        Laporan
+                    </a>
+                </li>
+                <li>
+                    <a href="members.html">
+                        <i class="fas fa-users"></i>
+                        Members
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="admin-header">
+                <h1>📊 Dashboard</h1>
+                <div class="header-actions">
+                    <div class="admin-user">
+                        <div class="admin-user-avatar">👤</div>
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <div class="stat-card-icon pink">
+                            <i class="fas fa-box"></i>
+                        </div>
+                    </div>
+                    <h3 id="totalProducts">10</h3>
+                    <p>Total Produk</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <div class="stat-card-icon purple">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                    </div>
+                    <h3 id="totalOrders">156</h3>
+                    <p>Total Pesanan</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <div class="stat-card-icon green">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                    </div>
+                    <h3 id="totalRevenue">Rp 23.4jt</h3>
+                    <p>Total Pendapatan</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <div class="stat-card-icon yellow">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <h3 id="totalMembers">89</h3>
+                    <p>Total Members</p>
+                </div>
+            </div>
+
+            <!-- Revenue Chart -->
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3>📈 Pendapatan 7 Hari Terakhir</h3>
+                </div>
+                <canvas id="revenueChart" height="100"></canvas>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="admin-table-container">
+                <div class="table-header">
+                    <h3>📦 Pesanan Terbaru</h3>
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Pelanggan</th>
+                            <th>Produk</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Tanggal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#BLB001</td>
+                            <td>Kak Dinda</td>
+                            <td>Korean Strawberry</td>
+                            <td>Rp 150.000</td>
+                            <td><span class="status-badge active">Selesai</span></td>
+                            <td>30 Jan 2026</td>
+                        </tr>
+                        <tr>
+                            <td>#BLB002</td>
+                            <td>Kak Rara</td>
+                            <td>Blueberry Cheese Cloud</td>
+                            <td>Rp 160.000</td>
+                            <td><span class="status-badge active">Selesai</span></td>
+                            <td>30 Jan 2026</td>
+                        </tr>
+                        <tr>
+                            <td>#BLB003</td>
+                            <td>Kak Budi</td>
+                            <td>Ice Cream Cake</td>
+                            <td>Rp 75.000</td>
+                            <td><span class="status-badge inactive">Pending</span></td>
+                            <td>31 Jan 2026</td>
+                        </tr>
+                        <tr>
+                            <td>#BLB004</td>
+                            <td>Kak Sinta</td>
+                            <td>Red Velvet Kiss</td>
+                            <td>Rp 155.000</td>
+                            <td><span class="status-badge inactive">Pending</span></td>
+                            <td>31 Jan 2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- AI Toggle Button -->
+    <button class="ai-toggle-btn" id="aiToggle">
+        <i class="fas fa-robot"></i>
+    </button>
+
+    <!-- AI Panel -->
+    <div class="ai-panel" id="aiPanel">
+        <div class="ai-panel-header">
+            <h3><i class="fas fa-robot"></i> AI Assistant</h3>
+            <button class="modal-close" id="aiClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="ai-panel-body">
+            <p style="color: var(--admin-text-muted); margin-bottom: 20px;">
+                Pilih bantuan yang kamu butuhkan:
+            </p>
+
+            <div class="ai-option" data-type="description">
+                <h4>✍️ Generate Deskripsi</h4>
+                <p>Buat deskripsi produk yang menarik</p>
+            </div>
+
+            <div class="ai-option" data-type="name">
+                <h4>💡 Suggest Nama Produk</h4>
+                <p>Ide nama produk kreatif</p>
+            </div>
+
+            <div class="ai-option" data-type="copy">
+                <h4>📣 Copywriting</h4>
+                <p>Buat copy marketing menarik</p>
+            </div>
+
+            <div class="ai-result" id="aiResult" style="display: none;">
+                <h4>✨ Hasil AI:</h4>
+                <p id="aiResultText"></p>
+                <div class="ai-result-actions">
+                    <button class="btn-ai-action" id="copyResult">
+                        <i class="fas fa-copy"></i> Copy
+                    </button>
+                    <button class="btn-ai-action" id="useResult">
+                        <i class="fas fa-check"></i> Gunakan
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="ai-input-area">
+            <textarea id="aiInput" rows="3" placeholder="Masukkan info produk atau konteks..."></textarea>
+            <button class="btn-ai-generate" id="generateBtn">
+                <i class="fas fa-magic"></i> Generate
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Check auth
+        if (localStorage.getItem('blububb_admin_logged') !== 'true') {
+            window.location.href = 'login.html';
+        }
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', function (e) {
+            e.preventDefault();
+            localStorage.removeItem('blububb_admin_logged');
+            window.location.href = 'login.html';
+        });
+
+        // Revenue Chart
+        const ctx = document.getElementById('revenueChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['25 Jan', '26 Jan', '27 Jan', '28 Jan', '29 Jan', '30 Jan', '31 Jan'],
+                datasets: [{
+                    label: 'Pendapatan (Rp)',
+                    data: [850000, 1200000, 950000, 1450000, 1100000, 1680000, 1350000],
+                    borderColor: '#e94560',
+                    backgroundColor: 'rgba(233, 69, 96, 0.1)',
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: '#e94560',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.05)'
+                        },
+                        ticks: {
+                            color: '#a0a0a0',
+                            callback: function (value) {
+                                return 'Rp ' + (value / 1000) + 'k';
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#a0a0a0'
+                        }
+                    }
+                }
+            }
+        });
+
+        // AI Panel Toggle
+        const aiToggle = document.getElementById('aiToggle');
+        const aiPanel = document.getElementById('aiPanel');
+        const aiClose = document.getElementById('aiClose');
+
+        aiToggle.addEventListener('click', () => {
+            aiPanel.classList.toggle('active');
+        });
+
+        aiClose.addEventListener('click', () => {
+            aiPanel.classList.remove('active');
+        });
+
+        // AI Options
+        const aiOptions = document.querySelectorAll('.ai-option');
+        let selectedType = '';
+
+        aiOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                aiOptions.forEach(o => o.classList.remove('active'));
+                option.classList.add('active');
+                selectedType = option.dataset.type;
+            });
+        });
+
+        // AI Generate (Demo)
+        document.getElementById('generateBtn').addEventListener('click', () => {
+            const input = document.getElementById('aiInput').value;
+            const result = document.getElementById('aiResult');
+            const resultText = document.getElementById('aiResultText');
+
+            if (!selectedType) {
+                alert('Pilih jenis bantuan terlebih dahulu!');
+                return;
+            }
+
+            if (!input) {
+                alert('Masukkan info produk atau konteks!');
+                return;
+            }
+
+            // Demo responses
+            const responses = {
+                description: `Nikmati kelembutan ${input} yang meleleh di lidah! Dibuat dengan bahan premium pilihan, setiap gigitan menghadirkan sensasi manis yang pas dan tekstur yang sempurna. Cocok untuk menemani momen spesialmu bersama orang tersayang. 💕`,
+                name: `Beberapa ide nama untuk "${input}":\n\n• Cloud Dream Cake\n• Velvet Bliss\n• Sweet Fantasy\n• Honey Soft Delight\n• Pastel Paradise`,
+                copy: `🎂 PROMO SPESIAL!\n\nMau ${input} yang bikin nagih?\nCuma di Blububb! ✨\n\n✅ 100% Homemade\n✅ Fresh setiap hari\n✅ Desain custom\n\nOrder sekarang via WA!\nSlot terbatas lho~ 💕`
+            };
+
+            resultText.textContent = responses[selectedType];
+            result.style.display = 'block';
+        });
+
+        // Copy result
+        document.getElementById('copyResult').addEventListener('click', () => {
+            const text = document.getElementById('aiResultText').textContent;
+            navigator.clipboard.writeText(text);
+            alert('Teks berhasil disalin!');
+        });
+    </script>
+</body>
+
+</html>

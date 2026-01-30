@@ -18,6 +18,25 @@
 
 <body>
 
+    <!-- Member Popup Overlay -->
+    <div class="member-popup-overlay" id="memberPopup">
+        <div class="member-popup glass-card">
+            <button class="popup-close" id="closePopup">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="popup-content">
+                <div class="popup-icon">🎂</div>
+                <h3>Join Blububb Family!</h3>
+                <p>Dapatkan diskon eksklusif & info promo duluan</p>
+                <div class="popup-buttons">
+                    <a href="register.html" class="btn btn-primary">Daftar Member</a>
+                    <a href="login.html" class="btn btn-secondary">Login</a>
+                </div>
+                <button class="popup-skip" id="skipPopup">Nanti aja deh</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container nav-container">
@@ -25,7 +44,7 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#best-seller">Best Seller</a></li>
-                <li><a href="#menu">Menu</a></li>
+                <li><a href="catalog.html">Katalog</a></li>
                 <li><a href="#testimoni">Testimoni</a></li>
                 <li><a href="#contact" class="btn-nav">Order Now</a></li>
             </ul>
@@ -153,12 +172,12 @@
                 <!-- Card 4 -->
                 <div class="card">
                     <div class="card-image-wrapper">
-                        <img src="crushed vanilla.jpeg" alt="Crushed Vanilla Cake" class="card-img">
+                        <img src="crushed vanilla.jpeg" alt="Peachy Creamy Cake" class="card-img">
                     </div>
                     <div class="card-body">
-                        <h3>Crushed Vanilla Cake</h3>
+                        <h3>Peachy Creamy Cake</h3>
                         <p class="price">Mulai 140k</p>
-                        <p class="desc">Rasa vanilla yang lembut dan enak, bikin melek dan semangat!</p>
+                        <p class="desc">Perpaduan segar buah peach dan cream lembut, manisnya pas dan ga bikin eneg.</p>
                         <a href="#" class="btn-card">Mau Ini aja!</a>
                     </div>
                 </div>
@@ -177,15 +196,21 @@
                 <!-- Card 6 -->
                 <div class="card">
                     <div class="card-image-wrapper">
-                        <img src="tiramisu box.jpeg" alt="Tiramisu Box" class="card-img">
+                        <img src="ice-cream.jpeg" alt="Ice Cream Cake" class="card-img">
                     </div>
                     <div class="card-body">
-                        <h3>Tiramisu Box</h3>
+                        <h3>Ice Cream Cake</h3>
                         <p class="price">Mulai 75k</p>
-                        <p class="desc">Dessert box kopi klasik ala Italia. Simple, elegan, dan lumer di mulut.</p>
+                        <p class="desc">Ice cream cake lembut dengan rasa khas vanilla dan cream cheese frosting.</p>
                         <a href="#" class="btn-card">Mau Ini aja!</a>
                     </div>
                 </div>
+            </div>
+            <!-- Catalog CTA Button -->
+            <div class="catalog-cta-wrapper">
+                <a href="catalog.html" class="btn btn-catalog">
+                    <i class="fas fa-th-large"></i> Lihat Semua Produk
+                </a>
             </div>
         </div>
     </section>
@@ -236,53 +261,7 @@
         </div>
     </section>
 
-    <!-- 4.1 Pastry Menu Section (Renumbered in logic but kept visually after cakes/before analysis usually, but user list puts products together. Moving Menu up to join Cakes if preferred, but existing flow Cakes -> Menu is good. Keeping Menu here for flow) -->
-    <!-- Pastry Menu Section -->
-    <section id="menu" class="section menu">
-        <div class="container">
-            <div class="section-header text-center">
-                <h2>Favorite Pastries 🥐</h2>
-                <p>Teman ngopi dan ngeteh cantik kamu hihi</p>
-            </div>
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div class="menu-icon"><i class="fas fa-bread-slice"></i></div>
-                    <h4>Butter Croissant</h4>
-                    <span class="price">25k</span>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-icon"><i class="fas fa-cookie"></i></div>
-                    <h4>Soft Cookies</h4>
-                    <span class="price">18k</span>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-icon"><i class="fas fa-stroopwafel"></i></div>
-                    <h4>Cinnamon Roll</h4>
-                    <span class="price">30k</span>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-icon"><i class="fas fa-pie-chart"></i></div>
-                    <h4>Fruit Danish</h4>
-                    <span class="price">28k</span>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-icon"><i class="fas fa-ice-cream"></i></div>
-                    <h4>Ice Cream Cake</h4>
-                    <span class="price">35k</span>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-icon"><i class="fas fa-cookie-bite"></i></div>
-                    <h4>Pastel Macarons</h4>
-                    <span class="price">20k</span>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-icon"><i class="fas fa-utensils"></i></div>
-                    <h4>Eclair Vanilla</h4>
-                    <span class="price">22k</span>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Why Us Section -->
     <section class="section why-us">

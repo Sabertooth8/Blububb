@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Blububb Pastry'n Cake</title>
+    <meta name="description" content="Selesaikan pesanan kue Blububb kamu dengan mudah dan cepat!">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Blububb <span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#best-seller">Best Seller</a></li>
+                <li><a href="catalog.html">Katalog</a></li>
+                <li><a href="index.html#testimoni">Testimoni</a></li>
+                <li><a href="index.html#contact" class="btn-nav">Order Now</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Checkout Section -->
+    <section class="checkout-page">
+        <div class="container">
+            <div class="section-header text-center" style="margin-bottom: 40px;">
+                <h1 style="font-size: 2.5rem; margin-bottom: 10px;">🛒 Checkout</h1>
+                <p style="color: var(--text-secondary);">Lengkapi data untuk melanjutkan pesanan</p>
+            </div>
+
+            <div class="checkout-container">
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <h2>📦 Ringkasan Pesanan</h2>
+
+                    <div class="order-item" id="orderItem">
+                        <img src="cake-strawberry.png" alt="Korean Strawberry" id="productImage">
+                        <div class="order-item-info">
+                            <h4 id="productName">Korean Strawberry</h4>
+                            <p class="qty">Qty: <span id="productQty">1</span></p>
+                            <p class="item-price" id="productPrice">Rp 150.000</p>
+                        </div>
+                    </div>
+
+                    <div class="order-total">
+                        <span>Total</span>
+                        <span class="total-price" id="totalPrice">Rp 150.000</span>
+                    </div>
+                </div>
+
+                <!-- Customer Form -->
+                <div class="customer-form">
+                    <h2>📋 Data Pemesan</h2>
+
+                    <form id="checkoutForm">
+                        <div class="form-group">
+                            <label for="nama">Nama Lengkap</label>
+                            <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="whatsapp">Nomor WhatsApp</label>
+                            <input type="tel" id="whatsapp" name="whatsapp" placeholder="08xxxxxxxxxx" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="alamat">Alamat Pengambilan/Pengiriman</label>
+                            <input type="text" id="alamat" name="alamat" placeholder="Masukkan alamat lengkap" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tanggal">Tanggal Ambil/Kirim</label>
+                            <input type="date" id="tanggal" name="tanggal" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="catatan">Catatan (Opsional)</label>
+                            <input type="text" id="catatan" name="catatan"
+                                placeholder="Tulisan di kue, request khusus, dll">
+                        </div>
+
+                        <button type="submit" class="btn-auth" style="background: #25D366;">
+                            <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                        </button>
+                    </form>
+
+                    <!-- Trust Badges -->
+                    <div class="trust-badges">
+                        <div class="trust-badge">
+                            <i class="fas fa-lock"></i>
+                            <span>Secure</span>
+                        </div>
+                        <div class="trust-badge">
+                            <i class="fas fa-star"></i>
+                            <span>Fresh</span>
+                        </div>
+                        <div class="trust-badge">
+                            <i class="fas fa-rocket"></i>
+                            <span>Fast Response</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3>Blububb Pastry'n Cake 🧁</h3>
+                <p>Oleh: Cindy Agustina Putri</p>
+                <p>Sweet treats made with love.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p>&copy; 2024 Blububb Pastry'n Cake. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+        }
+
+        // Product Data (will be connected to backend later)
+        const products = {
+            'korean-strawberry': {
+                name: 'Korean Strawberry',
+                price: 150000,
+                image: 'cake-strawberry.png'
+            },
+            'korean-fresh-cream': {
+                name: 'Korean Fresh Cream',
+                price: 145000,
+                image: 'korean-cake.jpeg'
+            },
+            'blueberry-cheese': {
+                name: 'Blueberry Cheese Cloud',
+                price: 160000,
+                image: 'cheese blueberry cloud.jpeg'
+            },
+            'peachy-creamy': {
+                name: 'Peachy Creamy Cake',
+                price: 140000,
+                image: 'crushed vanilla.jpeg'
+            },
+            'red-velvet': {
+                name: 'Red Velvet Kiss',
+                price: 155000,
+                image: 'velvet.jpeg'
+            },
+            'ice-cream-cake': {
+                name: 'Ice Cream Cake',
+                price: 75000,
+                image: 'ice-cream.jpeg'
+            },
+            'tiramisu-box': {
+                name: 'Tiramisu Box',
+                price: 85000,
+                image: 'tiramisu box.jpeg'
+            },
+            'cinnamon-roll': {
+                name: 'Cinnamon Roll',
+                price: 30000,
+                image: 'cinammon roll.jpeg'
+            },
+            'butter-croissant': {
+                name: 'Butter Croissant',
+                price: 25000,
+                image: 'croisanct.jpeg'
+            },
+            'fruit-danish': {
+                name: 'Fruit Danish',
+                price: 28000,
+                image: 'danish.jpeg'
+            }
+        };
+
+        // Get product from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('product');
+
+        if (productId && products[productId]) {
+            const product = products[productId];
+            document.getElementById('productName').textContent = product.name;
+            document.getElementById('productPrice').textContent = formatPrice(product.price);
+            document.getElementById('totalPrice').textContent = formatPrice(product.price);
+            document.getElementById('productImage').src = product.image;
+            document.getElementById('productImage').alt = product.name;
+        }
+
+        function formatPrice(price) {
+            return 'Rp ' + price.toLocaleString('id-ID');
+        }
+
+        // Set minimum date to tomorrow
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        document.getElementById('tanggal').min = tomorrow.toISOString().split('T')[0];
+
+        // Form submission - redirect to WhatsApp
+        document.getElementById('checkoutForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const nama = document.getElementById('nama').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+            const alamat = document.getElementById('alamat').value;
+            const tanggal = document.getElementById('tanggal').value;
+            const catatan = document.getElementById('catatan').value;
+            const productName = document.getElementById('productName').textContent;
+            const productPrice = document.getElementById('productPrice').textContent;
+
+            // Format date
+            const formattedDate = new Date(tanggal).toLocaleDateString('id-ID', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            // Create WhatsApp message
+            let message = `🎂 *ORDER BLUBUBB*\n\n`;
+            message += `*Produk:* ${productName}\n`;
+            message += `*Harga:* ${productPrice}\n\n`;
+            message += `*Data Pemesan:*\n`;
+            message += `Nama: ${nama}\n`;
+            message += `WhatsApp: ${whatsapp}\n`;
+            message += `Alamat: ${alamat}\n`;
+            message += `Tanggal: ${formattedDate}\n`;
+            if (catatan) {
+                message += `Catatan: ${catatan}\n`;
+            }
+            message += `\nTerima kasih sudah order di Blububb! 💕`;
+
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(message);
+
+            // Replace with actual WhatsApp number
+            const waNumber = '6281234567890'; // Replace with actual number
+            const waURL = `https://wa.me/${waNumber}?text=${encodedMessage}`;
+
+            window.open(waURL, '_blank');
+        });
+    </script>
+</body>
+
+</html>

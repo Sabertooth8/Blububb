@@ -1,0 +1,104 @@
+{
+    "products": [
+        {
+            "id": "1",
+            "name": "Korean Strawberry",
+            "price": 150000,
+            "description": "Sponge cake lembut dengan fresh strawberry cream yang manis dan segar.",
+            "image": "cake-strawberry.png",
+            "category": "Cake",
+            "featured": true,
+            "status": "active"
+        },
+        {
+            "id": "2",
+            "name": "Korean Fresh Cream",
+            "price": 145000,
+            "description": "Perpaduan segar buah peach dan cream lembut, manisnya pas dan ga bikin eneg.",
+            "image": "korean-cake.jpeg",
+            "category": "Cake",
+            "featured": true,
+            "status": "active"
+        },
+        {
+            "id": "3",
+            "name": "Blueberry Cheese Cloud",
+            "price": 160000,
+            "description": "Cheesecake lembut dengan topping blueberry segar. Warnanya ungu pastel gemes!",
+            "image": "cheese blueberry cloud.jpeg",
+            "category": "Cake",
+            "featured": true,
+            "status": "active"
+        },
+        {
+            "id": "4",
+            "name": "Peachy Creamy Cake",
+            "price": 140000,
+            "description": "Perpaduan segar buah peach dan cream lembut, manisnya pas.",
+            "image": "crushed vanilla.jpeg",
+            "category": "Cake",
+            "featured": false,
+            "status": "active"
+        },
+        {
+            "id": "5",
+            "name": "Red Velvet Kiss",
+            "price": 155000,
+            "description": "Tekstur lembut dengan rasa khas cocoa ringan dan cream cheese frosting.",
+            "image": "velvet.jpeg",
+            "category": "Cake",
+            "featured": true,
+            "status": "active"
+        },
+        {
+            "id": "6",
+            "name": "Ice Cream Cake",
+            "price": 75000,
+            "description": "Ice cream cake lembut dengan rasa khas vanilla dan cream cheese frosting.",
+            "image": "ice-cream.jpeg",
+            "category": "Cake",
+            "featured": true,
+            "status": "active"
+        },
+        {
+            "id": "7",
+            "name": "Tiramisu Box",
+            "price": 85000,
+            "description": "Tiramisu klasik dalam kemasan praktis. Lembut dan lezat!",
+            "image": "tiramisu box.jpeg",
+            "category": "Dessert",
+            "featured": false,
+            "status": "active"
+        },
+        {
+            "id": "8",
+            "name": "Cinnamon Roll",
+            "price": 30000,
+            "description": "Roll manis dengan aroma kayu manis yang menggugah selera.",
+            "image": "cinammon roll.jpeg",
+            "category": "Pastry",
+            "featured": false,
+            "status": "active"
+        },
+        {
+            "id": "9",
+            "name": "Butter Croissant",
+            "price": 25000,
+            "description": "Croissant renyah dengan butter premium, sempurna untuk sarapan.",
+            "image": "croisanct.jpeg",
+            "category": "Pastry",
+            "featured": false,
+            "status": "active"
+        },
+        {
+            "id": "10",
+            "name": "Fruit Danish",
+            "price": 28000,
+            "description": "Danish pastry dengan topping buah segar pilihan.",
+            "image": "danish.jpeg",
+            "category": "Pastry",
+            "featured": false,
+            "status": "active"
+        }
+    ]
+}

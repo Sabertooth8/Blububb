@@ -1,3 +1,53 @@
+// ==============================
+// MEMBER POPUP FUNCTIONALITY
+// ==============================
+
+const memberPopup = document.getElementById('memberPopup');
+const closePopupBtn = document.getElementById('closePopup');
+const skipPopupBtn = document.getElementById('skipPopup');
+
+// Show popup after delay if not seen before
+function initMemberPopup() {
+    if (!memberPopup) return;
+
+    const hasSeenPopup = localStorage.getItem('blububb_popup_seen');
+
+    if (!hasSeenPopup) {
+        setTimeout(() => {
+            memberPopup.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }, 3000); // Show after 3 seconds
+    }
+}
+
+function closePopup() {
+    if (!memberPopup) return;
+    memberPopup.classList.remove('active');
+    document.body.style.overflow = '';
+    localStorage.setItem('blububb_popup_seen', 'true');
+}
+
+if (closePopupBtn) {
+    closePopupBtn.addEventListener('click', closePopup);
+}
+
+if (skipPopupBtn) {
+    skipPopupBtn.addEventListener('click', closePopup);
+}
+
+// Close on overlay click
+if (memberPopup) {
+    memberPopup.addEventListener('click', (e) => {
+        if (e.target === memberPopup) {
+            closePopup();
+        }
+    });
+}
+
+// Initialize popup on page load
+document.addEventListener('DOMContentLoaded', initMemberPopup);
+
+// ==============================
 // Hamburger Menu Toggle
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');

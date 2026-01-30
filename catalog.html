@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Produk - Blububb Pastry'n Cake</title>
+    <meta name="description"
+        content="Lihat semua koleksi kue dan pastry dari Blububb. Pilih favorit kamu dan order sekarang!">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Blububb <span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#best-seller">Best Seller</a></li>
+                <li><a href="catalog.html" class="active">Katalog</a></li>
+                <li><a href="index.html#testimoni">Testimoni</a></li>
+                <li><a href="index.html#contact" class="btn-nav">Order Now</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Catalog Hero -->
+    <section class="catalog-hero">
+        <div class="container">
+            <h1>✨ Our Sweet Collection ✨</h1>
+            <p>Pilih kue favoritmu dan buat momen spesialmu lebih manis</p>
+        </div>
+    </section>
+
+    <!-- Catalog Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="catalog-grid" id="productGrid">
+                <!-- Products will be loaded dynamically -->
+
+                <!-- Static Products for Demo -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="cake-strawberry.png" alt="Korean Strawberry">
+                    </div>
+                    <div class="product-info">
+                        <h3>Korean Strawberry</h3>
+                        <p class="price">Rp 150.000</p>
+                        <a href="checkout.html?product=korean-strawberry" class="btn-order">
+                            <i class="fas fa-shopping-bag"></i> Order
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="korean-cake.jpeg" alt="Korean Fresh Cream">
+                    </div>
+                    <div class="product-info">
+                        <h3>Korean Fresh Cream</h3>
+                        <p class="price">Rp 145.000</p>
+                        <a href="checkout.html?product=korean-fresh-cream" class="btn-order">
+                            <i class="fas fa-shopping-bag"></i> Order
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="cheese blueberry cloud.jpeg" alt="Blueberry Cheese Cloud">
+                    </div>
+                    <div class="product-info">
+                        <h3>Blueberry Cheese Cloud</h3>
+                        <p class="price">Rp 160.000</p>
+                        <a href="checkout.html?product=blueberry-cheese" class="btn-order">
+                            <i class="fas fa-shopping-bag"></i> Order
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="crushed vanilla.jpeg" alt="Peachy Creamy Cake">
+                    </div>
+                    <div class="product-info">
+                        <h3>Peachy Creamy Cake</h3>
+                        <p class="price">Rp 140.000</p>
+                        <a href="checkout.html?product=peachy-creamy" class="btn-order">
+                            <i class="fas fa-shopping-bag"></i> Order
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="velvet.jpeg" alt="Red Velvet Kiss">
+                    </div>
+                    <div class="product-info">
+                        <h3>Red Velvet Kiss</h3>
+                        <p class="price">Rp 155.000</p>
+                        <a href="checkout.html?product=red-velvet" class="btn-order">
+                            <i class="fas fa-shopping-bag"></i> Order
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="ice-cream.jpeg" alt="Ice Cream Cake">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ice Cream Cake</h3>
+                        <p class="price">Rp 75.000</p>
+                        <a href="checkout.html?product=ice-cream-cake" class="btn-order">
+                            <i class="fas fa-shopping-bag"></i> Order
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="tiramisu box.jpeg" alt="Tiramisu Box">
+                    </div>
+                    <div class="product-info">
+                        <h3>Tiramisu Box</h3>
+                        <p class="price">Rp 85.000</p>
+                        <a href="checkout.html?product=tiramisu-box" class="btn-order">
+                            <i class="fas fa-shopping-bag"></i> Order
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="cinammon roll.jpeg" alt="Cinnamon Roll">
+                    </div>
+                    <div class="product-info">
+                        <h3>Cinnamon Roll</h3>
+                        <p class="price">Rp 30.000</p>
+                        <a href="checkout.html?product=cinnamon-roll" class="btn-order">
+                            <i class="fas fa-shopping-bag"></i> Order
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="croisanct.jpeg" alt="Butter Croissant">
+                    </div>
+                    <div class="product-info">
+                        <h3>Butter Croissant</h3>
+                        <p class="price">Rp 25.000</p>
+                        <a href="checkout.html?product=butter-croissant" class="btn-order">
+                            <i class="fas fa-shopping-bag"></i> Order
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="danish.jpeg" alt="Fruit Danish">
+                    </div>
+                    <div class="product-info">
+                        <h3>Fruit Danish</h3>
+                        <p class="price">Rp 28.000</p>
+                        <a href="checkout.html?product=fruit-danish" class="btn-order">
+                            <i class="fas fa-shopping-bag"></i> Order
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta">
+        <div class="container text-center">
+            <h2>Ada request khusus? 💕</h2>
+            <p>Konsultasi desain custom cake kamu sekarang!</p>
+            <a href="https://wa.me/" target="_blank" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> Chat WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3>Blububb Pastry'n Cake 🧁</h3>
+                <p>Oleh: Cindy Agustina Putri</p>
+                <p>Sweet treats made with love.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p>&copy; 2024 Blububb Pastry'n Cake. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+        }
+
+        // Animate products on scroll
+        const productCards = document.querySelectorAll('.product-card');
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translateY(0)";
+                    }, index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        productCards.forEach(card => {
+            card.style.opacity = "0";
+            card.style.transform = "translateY(30px)";
+            card.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
+            observer.observe(card);
+        });
+    </script>
+</body>
+
+</html>

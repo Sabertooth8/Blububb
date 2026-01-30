@@ -1,0 +1,76 @@
+{
+    "transactions": [
+        {
+            "id": "BLB001",
+            "customer_name": "Kak Dinda",
+            "customer_phone": "081234567890",
+            "product_id": "1",
+            "product_name": "Korean Strawberry",
+            "quantity": 1,
+            "total": 150000,
+            "date": "2026-01-30",
+            "status": "completed",
+            "notes": ""
+        },
+        {
+            "id": "BLB002",
+            "customer_name": "Kak Rara",
+            "customer_phone": "082345678901",
+            "product_id": "3",
+            "product_name": "Blueberry Cheese Cloud",
+            "quantity": 1,
+            "total": 160000,
+            "date": "2026-01-30",
+            "status": "completed",
+            "notes": "Tulisan: Happy Birthday Mama"
+        },
+        {
+            "id": "BLB003",
+            "customer_name": "Kak Budi",
+            "customer_phone": "083456789012",
+            "product_id": "6",
+            "product_name": "Ice Cream Cake",
+            "quantity": 1,
+            "total": 75000,
+            "date": "2026-01-31",
+            "status": "pending",
+            "notes": ""
+        },
+        {
+            "id": "BLB004",
+            "customer_name": "Kak Sinta",
+            "customer_phone": "084567890123",
+            "product_id": "5",
+            "product_name": "Red Velvet Kiss",
+            "quantity": 1,
+            "total": 155000,
+            "date": "2026-01-31",
+            "status": "pending",
+            "notes": "Request tambah topping strawberry"
+        },
+        {
+            "id": "BLB005",
+            "customer_name": "Kak Sari",
+            "customer_phone": "085678901234",
+            "product_id": "2",
+            "product_name": "Korean Fresh Cream",
+            "quantity": 1,
+            "total": 145000,
+            "date": "2026-01-29",
+            "status": "completed",
+            "notes": ""
+        },
+        {
+            "id": "BLB006",
+            "customer_name": "Kak Toni",
+            "customer_phone": "086789012345",
+            "product_id": "7",
+            "product_name": "Tiramisu Box, Croissant",
+            "quantity": 2,
+            "total": 110000,
+            "date": "2026-01-29",
+            "status": "completed",
+            "notes": ""
+        }
+    ]
+}

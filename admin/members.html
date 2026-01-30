@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members - Blububb Admin</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-logo">
+                <span class="logo-icon">🧁</span>
+                <h2>Blububb</h2>
+            </div>
+
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="dashboard.html">
+                        <i class="fas fa-chart-pie"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="products.html">
+                        <i class="fas fa-box"></i>
+                        Produk
+                    </a>
+                </li>
+                <li>
+                    <a href="reports.html">
+                        <i class="fas fa-chart-line"></i>
+                        Laporan
+                    </a>
+                </li>
+                <li>
+                    <a href="members.html" class="active">
+                        <i class="fas fa-users"></i>
+                        Members
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="admin-header">
+                <h1>👥 Manajemen Member</h1>
+                <div class="header-actions">
+                    <div class="admin-user">
+                        <div class="admin-user-avatar">👤</div>
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <div class="stat-card-icon purple">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <h3 id="totalMembers">89</h3>
+                    <p>Total Members</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <div class="stat-card-icon green">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                    </div>
+                    <h3>12</h3>
+                    <p>Member Baru Bulan Ini</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <div class="stat-card-icon pink">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                    </div>
+                    <h3>23</h3>
+                    <p>Member VIP</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <div class="stat-card-icon yellow">
+                            <i class="fas fa-repeat"></i>
+                        </div>
+                    </div>
+                    <h3>67%</h3>
+                    <p>Repeat Customer</p>
+                </div>
+            </div>
+
+            <!-- Members Table -->
+            <div class="admin-table-container">
+                <div class="table-header">
+                    <h3>Daftar Member</h3>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="searchMember" placeholder="Cari member..." style="padding: 10px 15px; background: var(--admin-bg); border: 1px solid var(--admin-border); 
+                            border-radius: 10px; color: var(--admin-text); font-family: 'Poppins', sans-serif;">
+                        <button class="btn-add" style="background: var(--admin-success);">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                    </div>
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Member</th>
+                            <th>Email</th>
+                            <th>WhatsApp</th>
+                            <th>Bergabung</th>
+                            <th>Total Order</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="membersTable">
+                        <tr>
+                            <td>
+                                <div class="product-cell">
+                                    <div
+                                        style="width: 40px; height: 40px; background: var(--gradient-admin); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                        D</div>
+                                    <div class="product-name">Dinda Permata</div>
+                                </div>
+                            </td>
+                            <td>dinda@email.com</td>
+                            <td>081234567890</td>
+                            <td>15 Jan 2026</td>
+                            <td>8 orders</td>
+                            <td><span class="status-badge active">VIP</span></td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="btn-action edit">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-action">
+                                        <i class="fas fa-envelope"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="product-cell">
+                                    <div
+                                        style="width: 40px; height: 40px; background: linear-gradient(135deg, #7b68ee, #e94560); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                        R</div>
+                                    <div class="product-name">Rara Setiawati</div>
+                                </div>
+                            </td>
+                            <td>rara.s@email.com</td>
+                            <td>082345678901</td>
+                            <td>18 Jan 2026</td>
+                            <td>5 orders</td>
+                            <td><span class="status-badge active">Active</span></td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="btn-action edit">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-action">
+                                        <i class="fas fa-envelope"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="product-cell">
+                                    <div
+                                        style="width: 40px; height: 40px; background: linear-gradient(135deg, #00d9a5, #7b68ee); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                        B</div>
+                                    <div class="product-name">Budi Santoso</div>
+                                </div>
+                            </td>
+                            <td>budi.s@email.com</td>
+                            <td>083456789012</td>
+                            <td>20 Jan 2026</td>
+                            <td>3 orders</td>
+                            <td><span class="status-badge active">Active</span></td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="btn-action edit">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-action">
+                                        <i class="fas fa-envelope"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="product-cell">
+                                    <div
+                                        style="width: 40px; height: 40px; background: linear-gradient(135deg, #ffc107, #e94560); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                        S</div>
+                                    <div class="product-name">Sinta Dewi</div>
+                                </div>
+                            </td>
+                            <td>sinta.d@email.com</td>
+                            <td>084567890123</td>
+                            <td>22 Jan 2026</td>
+                            <td>6 orders</td>
+                            <td><span class="status-badge active">VIP</span></td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="btn-action edit">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-action">
+                                        <i class="fas fa-envelope"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="product-cell">
+                                    <div
+                                        style="width: 40px; height: 40px; background: linear-gradient(135deg, #e94560, #0f3460); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                        M</div>
+                                    <div class="product-name">Maya Putri</div>
+                                </div>
+                            </td>
+                            <td>maya.p@email.com</td>
+                            <td>085678901234</td>
+                            <td>25 Jan 2026</td>
+                            <td>2 orders</td>
+                            <td><span class="status-badge active">Active</span></td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="btn-action edit">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-action">
+                                        <i class="fas fa-envelope"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="product-cell">
+                                    <div
+                                        style="width: 40px; height: 40px; background: linear-gradient(135deg, #7b68ee, #00d9a5); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                        L</div>
+                                    <div class="product-name">Lisa Andriani</div>
+                                </div>
+                            </td>
+                            <td>lisa.a@email.com</td>
+                            <td>086789012345</td>
+                            <td>28 Jan 2026</td>
+                            <td>1 order</td>
+                            <td><span class="status-badge inactive">New</span></td>
+                            <td>
+                                <div class="action-btns">
+                                    <button class="btn-action edit">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-action">
+                                        <i class="fas fa-envelope"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Check auth
+        if (localStorage.getItem('blububb_admin_logged') !== 'true') {
+            window.location.href = 'login.html';
+        }
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', function (e) {
+            e.preventDefault();
+            localStorage.removeItem('blububb_admin_logged');
+            window.location.href = 'login.html';
+        });
+
+        // Search functionality
+        document.getElementById('searchMember').addEventListener('input', function (e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('#membersTable tr');
+
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(searchTerm) ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produk - Blububb Admin</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-logo">
+                <span class="logo-icon">🧁</span>
+                <h2>Blububb</h2>
+            </div>
+
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="dashboard.html">
+                        <i class="fas fa-chart-pie"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="products.html" class="active">
+                        <i class="fas fa-box"></i>
+                        Produk
+                    </a>
+                </li>
+                <li>
+                    <a href="reports.html">
+                        <i class="fas fa-chart-line"></i>
+                        Laporan
+                    </a>
+                </li>
+                <li>
+                    <a href="members.html">
+                        <i class="fas fa-users"></i>
+                        Members
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="admin-header">
+                <h1>📦 Manajemen Produk</h1>
+                <div class="header-actions">
+                    <div class="admin-user">
+                        <div class="admin-user-avatar">👤</div>
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Table -->
+            <div class="admin-table-container">
+                <div class="table-header">
+                    <h3>Daftar Produk</h3>
+                    <button class="btn-add" id="addProductBtn">
+                        <i class="fas fa-plus"></i> Tambah Produk
+                    </button>
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Produk</th>
+                            <th>Kategori</th>
+                            <th>Harga</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productsTable">
+                        <!-- Products will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add/Edit Product Modal -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">➕ Tambah Produk</h3>
+                <button class="modal-close" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <form id="productForm">
+                <input type="hidden" id="productId">
+
+                <div class="image-upload" id="imageUpload">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Klik untuk upload gambar</p>
+                    <input type="file" id="productImage" accept="image/*" style="display: none;">
+                </div>
+                <div id="imagePreview" style="display: none; text-align: center; margin-bottom: 20px;">
+                    <img src="" id="previewImg" style="max-width: 200px; border-radius: 10px;">
+                </div>
+
+                <div class="form-group">
+                    <label for="productName">Nama Produk</label>
+                    <input type="text" id="productName" placeholder="Masukkan nama produk" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="productCategory">Kategori</label>
+                    <input type="text" id="productCategory" placeholder="Cake / Pastry / Dessert" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="productPrice">Harga (Rp)</label>
+                    <input type="number" id="productPrice" placeholder="150000" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="productDesc">Deskripsi</label>
+                    <input type="text" id="productDesc" placeholder="Deskripsi singkat produk">
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button type="button" class="btn-admin" style="background: var(--admin-accent); flex: 1;"
+                        id="aiSuggestBtn">
+                        <i class="fas fa-robot"></i> AI Suggest
+                    </button>
+                    <button type="submit" class="btn-admin" style="flex: 1;">
+                        <i class="fas fa-save"></i> Simpan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- AI Toggle Button -->
+    <button class="ai-toggle-btn" id="aiToggle">
+        <i class="fas fa-robot"></i>
+    </button>
+
+    <!-- AI Panel -->
+    <div class="ai-panel" id="aiPanel">
+        <div class="ai-panel-header">
+            <h3><i class="fas fa-robot"></i> AI Assistant</h3>
+            <button class="modal-close" id="aiClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="ai-panel-body">
+            <p style="color: var(--admin-text-muted); margin-bottom: 20px;">
+                Pilih bantuan yang kamu butuhkan:
+            </p>
+
+            <div class="ai-option active" data-type="description">
+                <h4>✍️ Generate Deskripsi</h4>
+                <p>Buat deskripsi produk yang menarik</p>
+            </div>
+
+            <div class="ai-option" data-type="name">
+                <h4>💡 Suggest Nama Produk</h4>
+                <p>Ide nama produk kreatif</p>
+            </div>
+
+            <div class="ai-option" data-type="copy">
+                <h4>📣 Copywriting</h4>
+                <p>Buat copy marketing menarik</p>
+            </div>
+
+            <div class="ai-result" id="aiResult" style="display: none;">
+                <h4>✨ Hasil AI:</h4>
+                <p id="aiResultText"></p>
+                <div class="ai-result-actions">
+                    <button class="btn-ai-action" id="copyResult">
+                        <i class="fas fa-copy"></i> Copy
+                    </button>
+                    <button class="btn-ai-action" id="useResult">
+                        <i class="fas fa-check"></i> Gunakan
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="ai-input-area">
+            <textarea id="aiInput" rows="3" placeholder="Masukkan nama atau tema produk..."></textarea>
+            <button class="btn-ai-generate" id="generateBtn">
+                <i class="fas fa-magic"></i> Generate
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Check auth
+        if (localStorage.getItem('blububb_admin_logged') !== 'true') {
+            window.location.href = 'login.html';
+        }
+
+        // Sample products data (will be replaced with JSON/API)
+        let products = [
+            { id: 1, name: 'Korean Strawberry', category: 'Cake', price: 150000, image: '../cake-strawberry.png', status: 'active', desc: 'Sponge cake lembut dengan fresh strawberry cream' },
+            { id: 2, name: 'Korean Fresh Cream', category: 'Cake', price: 145000, image: '../korean-cake.jpeg', status: 'active', desc: 'Perpaduan segar buah peach dan cream lembut' },
+            { id: 3, name: 'Blueberry Cheese Cloud', category: 'Cake', price: 160000, image: '../cheese blueberry cloud.jpeg', status: 'active', desc: 'Cheesecake lembut dengan topping blueberry segar' },
+            { id: 4, name: 'Red Velvet Kiss', category: 'Cake', price: 155000, image: '../velvet.jpeg', status: 'active', desc: 'Tekstur lembut dengan rasa khas cocoa ringan' },
+            { id: 5, name: 'Ice Cream Cake', category: 'Cake', price: 75000, image: '../ice-cream.jpeg', status: 'active', desc: 'Ice cream cake lembut dengan rasa vanilla' },
+            { id: 6, name: 'Tiramisu Box', category: 'Dessert', price: 85000, image: '../tiramisu box.jpeg', status: 'active', desc: 'Tiramisu klasik dalam kemasan praktis' },
+            { id: 7, name: 'Cinnamon Roll', category: 'Pastry', price: 30000, image: '../cinammon roll.jpeg', status: 'active', desc: 'Roll manis dengan aroma kayu manis' },
+            { id: 8, name: 'Butter Croissant', category: 'Pastry', price: 25000, image: '../croisanct.jpeg', status: 'active', desc: 'Croissant renyah dengan butter premium' },
+        ];
+
+        // Render products
+        function renderProducts() {
+            const tbody = document.getElementById('productsTable');
+            tbody.innerHTML = products.map(p => `
+                <tr>
+                    <td>
+                        <div class="product-cell">
+                            <img src="${p.image}" alt="${p.name}" class="product-thumb">
+                            <div>
+                                <div class="product-name">${p.name}</div>
+                                <small style="color: var(--admin-text-muted);">${p.desc || ''}</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td>${p.category}</td>
+                    <td>Rp ${p.price.toLocaleString('id-ID')}</td>
+                    <td><span class="status-badge ${p.status}">${p.status === 'active' ? 'Aktif' : 'Nonaktif'}</span></td>
+                    <td>
+                        <div class="action-btns">
+                            <button class="btn-action edit" onclick="editProduct(${p.id})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn-action" onclick="deleteProduct(${p.id})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        renderProducts();
+
+        // Modal
+        const modal = document.getElementById('productModal');
+        const addBtn = document.getElementById('addProductBtn');
+        const closeBtn = document.getElementById('closeModal');
+
+        addBtn.addEventListener('click', () => {
+            document.getElementById('modalTitle').textContent = '➕ Tambah Produk';
+            document.getElementById('productForm').reset();
+            document.getElementById('productId').value = '';
+            document.getElementById('imagePreview').style.display = 'none';
+            document.getElementById('imageUpload').style.display = 'block';
+            modal.classList.add('active');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Image upload
+        const imageUpload = document.getElementById('imageUpload');
+        const imageInput = document.getElementById('productImage');
+        const imagePreview = document.getElementById('imagePreview');
+        const previewImg = document.getElementById('previewImg');
+
+        imageUpload.addEventListener('click', () => imageInput.click());
+
+        imageInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    previewImg.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                    imageUpload.style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Edit product
+        window.editProduct = function (id) {
+            const product = products.find(p => p.id === id);
+            if (product) {
+                document.getElementById('modalTitle').textContent = '✏️ Edit Produk';
+                document.getElementById('productId').value = product.id;
+                document.getElementById('productName').value = product.name;
+                document.getElementById('productCategory').value = product.category;
+                document.getElementById('productPrice').value = product.price;
+                document.getElementById('productDesc').value = product.desc || '';
+
+                previewImg.src = product.image;
+                imagePreview.style.display = 'block';
+                imageUpload.style.display = 'none';
+
+                modal.classList.add('active');
+            }
+        };
+
+        // Delete product
+        window.deleteProduct = function (id) {
+            if (confirm('Yakin ingin menghapus produk ini?')) {
+                products = products.filter(p => p.id !== id);
+                renderProducts();
+                alert('Produk berhasil dihapus!');
+            }
+        };
+
+        // Save product
+        document.getElementById('productForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const id = document.getElementById('productId').value;
+            const name = document.getElementById('productName').value;
+            const category = document.getElementById('productCategory').value;
+            const price = parseInt(document.getElementById('productPrice').value);
+            const desc = document.getElementById('productDesc').value;
+
+            if (id) {
+                // Update existing
+                const index = products.findIndex(p => p.id === parseInt(id));
+                if (index !== -1) {
+                    products[index] = { ...products[index], name, category, price, desc };
+                }
+            } else {
+                // Add new
+                const newId = Math.max(...products.map(p => p.id)) + 1;
+                products.push({
+                    id: newId,
+                    name,
+                    category,
+                    price,
+                    desc,
+                    image: previewImg.src || '../cake-strawberry.png',
+                    status: 'active'
+                });
+            }
+
+            renderProducts();
+            modal.classList.remove('active');
+            alert('Produk berhasil disimpan!');
+        });
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', function (e) {
+            e.preventDefault();
+            localStorage.removeItem('blububb_admin_logged');
+            window.location.href = 'login.html';
+        });
+
+        // AI Panel Toggle
+        const aiToggle = document.getElementById('aiToggle');
+        const aiPanel = document.getElementById('aiPanel');
+        const aiClose = document.getElementById('aiClose');
+
+        aiToggle.addEventListener('click', () => {
+            aiPanel.classList.toggle('active');
+        });
+
+        aiClose.addEventListener('click', () => {
+            aiPanel.classList.remove('active');
+        });
+
+        // AI Options
+        const aiOptions = document.querySelectorAll('.ai-option');
+        let selectedType = 'description';
+
+        aiOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                aiOptions.forEach(o => o.classList.remove('active'));
+                option.classList.add('active');
+                selectedType = option.dataset.type;
+            });
+        });
+
+        // AI Suggest Button in Modal
+        document.getElementById('aiSuggestBtn').addEventListener('click', () => {
+            const name = document.getElementById('productName').value;
+            if (!name) {
+                alert('Masukkan nama produk terlebih dahulu!');
+                return;
+            }
+
+            // Generate description demo
+            const desc = `Nikmati kelembutan ${name} yang meleleh di lidah! Dibuat dengan bahan premium pilihan, setiap gigitan menghadirkan sensasi manis yang pas. ✨`;
+            document.getElementById('productDesc').value = desc;
+        });
+
+        // AI Generate
+        document.getElementById('generateBtn').addEventListener('click', () => {
+            const input = document.getElementById('aiInput').value;
+            const result = document.getElementById('aiResult');
+            const resultText = document.getElementById('aiResultText');
+
+            if (!input) {
+                alert('Masukkan info produk atau konteks!');
+                return;
+            }
+
+            const responses = {
+                description: `Nikmati kelembutan ${input} yang meleleh di lidah! Dibuat dengan bahan premium pilihan, setiap gigitan menghadirkan sensasi manis yang pas dan tekstur yang sempurna. Cocok untuk menemani momen spesialmu. 💕`,
+                name: `Ide nama untuk "${input}":\n• Cloud Dream Cake\n• Velvet Bliss\n• Sweet Fantasy\n• Honey Soft Delight`,
+                copy: `🎂 PROMO SPESIAL!\n\nMau ${input} yang bikin nagih?\nCuma di Blububb! ✨\n\n✅ 100% Homemade\n✅ Fresh setiap hari\n\nOrder sekarang! 💕`
+            };
+
+            resultText.textContent = responses[selectedType];
+            result.style.display = 'block';
+        });
+
+        document.getElementById('copyResult').addEventListener('click', () => {
+            navigator.clipboard.writeText(document.getElementById('aiResultText').textContent);
+            alert('Teks disalin!');
+        });
+
+        document.getElementById('useResult').addEventListener('click', () => {
+            const text = document.getElementById('aiResultText').textContent;
+            document.getElementById('productDesc').value = text;
+            aiPanel.classList.remove('active');
+            modal.classList.add('active');
+        });
+    </script>
+</body>
+
+</html>

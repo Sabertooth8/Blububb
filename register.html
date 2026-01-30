@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Member - Blububb Pastry'n Cake</title>
+    <meta name="description" content="Daftar jadi member Blububb dan dapatkan promo eksklusif serta info terbaru!">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        .auth-page {
+            background:
+                radial-gradient(circle at 20% 80%, rgba(255, 196, 214, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(205, 239, 248, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 244, 189, 0.3) 0%, transparent 40%),
+                var(--bg-cream);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .auth-container {
+            max-width: 480px;
+        }
+
+        .auth-decoration {
+            position: fixed;
+            font-size: 2rem;
+            opacity: 0.5;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .deco-1 {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .deco-2 {
+            top: 20%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+
+        .deco-3 {
+            bottom: 15%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        .deco-4 {
+            bottom: 25%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+        .benefits-list {
+            background: rgba(255, 196, 214, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .benefits-list h4 {
+            color: var(--deep-pink);
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .benefits-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefits-list li {
+            padding: 8px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .benefits-list li i {
+            color: var(--deep-pink);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="auth-page">
+        <!-- Decorative Elements -->
+        <span class="auth-decoration deco-1">🧁</span>
+        <span class="auth-decoration deco-2">🍰</span>
+        <span class="auth-decoration deco-3">🎂</span>
+        <span class="auth-decoration deco-4">🍓</span>
+
+        <div class="auth-container">
+            <div class="auth-logo">
+                <div class="logo-icon">🧁</div>
+                <h1>Blububb</h1>
+            </div>
+
+            <form class="auth-form" id="registerForm">
+                <h2>Gabung Blububb Family! 💕</h2>
+
+                <!-- Benefits -->
+                <div class="benefits-list">
+                    <h4>✨ Keuntungan Member:</h4>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Diskon eksklusif member only</li>
+                        <li><i class="fas fa-check-circle"></i> Info promo & produk baru duluan</li>
+                        <li><i class="fas fa-check-circle"></i> Birthday surprise special</li>
+                        <li><i class="fas fa-check-circle"></i> Free delivery untuk order tertentu</li>
+                    </ul>
+                </div>
+
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap</label>
+                    <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="nama@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="whatsapp">Nomor WhatsApp</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" placeholder="08xxxxxxxxxx" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Minimal 6 karakter" required
+                        minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Konfirmasi Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Ulangi password"
+                        required>
+                </div>
+
+                <button type="submit" class="btn-auth">
+                    <i class="fas fa-user-plus"></i> Daftar Sekarang
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                <p>Sudah punya akun? <a href="login.html">Login di sini</a></p>
+                <p style="margin-top: 15px;"><a href="index.html">← Kembali ke Home</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('Password tidak cocok! Silakan coba lagi.');
+                return;
+            }
+
+            const nama = document.getElementById('nama').value;
+            const email = document.getElementById('email').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+
+            // For now, just show success message
+            // Will be connected to backend later
+            alert(`Selamat ${nama}! Pendaftaran berhasil! 🎉\n(Demo - akan terhubung ke backend)`);
+
+            // Redirect to login
+            // window.location.href = 'login.html';
+        });
+    </script>
+</body>
+
+</html>
