@@ -271,10 +271,9 @@
     <script src="cart.js"></script>
     <script>
         // ==============================
-        // CHECKOUT PAGE FUNCTIONALITY
+        // CHECKOUT PAGE FUNCTIONALITY (Static - No Backend Required)
         // ==============================
 
-        const API_BASE = 'http://localhost:5000';
         let currentStep = 1;
         let selectedPayment = 'transfer';
         let orderData = {};
@@ -476,24 +475,8 @@
         }
 
         // Submit order
-        document.getElementById('submitOrder').addEventListener('click', async () => {
+        document.getElementById('submitOrder').addEventListener('click', () => {
             const cart = CartManager.getCart();
-
-            // Save transaction to backend
-            try {
-                await fetch(`${API_BASE}/api/transactions`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        items: cart.items,
-                        total: cart.total,
-                        customer: orderData,
-                        payment_method: orderData.payment
-                    })
-                });
-            } catch (error) {
-                console.log('Backend not available, continuing with WhatsApp');
-            }
 
             // Create WhatsApp message
             const formattedDate = new Date(orderData.tanggal).toLocaleDateString('id-ID', {

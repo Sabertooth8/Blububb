@@ -147,10 +147,20 @@
     <script src="cart.js"></script>
     <script>
         // ==============================
-        // CATALOG PAGE FUNCTIONALITY
-        // ==============================
+        // Static Products Data (no backend required)
+        const PRODUCTS_DATA = [
+            { id: "1", name: "Korean Strawberry", price: 150000, description: "Sponge cake lembut dengan fresh strawberry cream yang manis dan segar.", image: "cake-strawberry.png", category: "Cake", status: "active" },
+            { id: "2", name: "Korean Fresh Cream", price: 145000, description: "Perpaduan segar buah peach dan cream lembut, manisnya pas dan ga bikin eneg.", image: "korean-cake.jpeg", category: "Cake", status: "active" },
+            { id: "3", name: "Blueberry Cheese Cloud", price: 160000, description: "Cheesecake lembut dengan topping blueberry segar. Warnanya ungu pastel gemes!", image: "cheese blueberry cloud.jpeg", category: "Cake", status: "active" },
+            { id: "4", name: "Peachy Creamy Cake", price: 140000, description: "Perpaduan segar buah peach dan cream lembut, manisnya pas.", image: "crushed vanilla.jpeg", category: "Cake", status: "active" },
+            { id: "5", name: "Red Velvet Kiss", price: 155000, description: "Tekstur lembut dengan rasa khas cocoa ringan dan cream cheese frosting.", image: "velvet.jpeg", category: "Cake", status: "active" },
+            { id: "6", name: "Ice Cream Cake", price: 75000, description: "Ice cream cake lembut dengan rasa khas vanilla dan cream cheese frosting.", image: "ice-cream.jpeg", category: "Cake", status: "active" },
+            { id: "7", name: "Tiramisu Box", price: 85000, description: "Tiramisu klasik dalam kemasan praktis. Lembut dan lezat!", image: "tiramisu box.jpeg", category: "Dessert", status: "active" },
+            { id: "8", name: "Cinnamon Roll", price: 30000, description: "Roll manis dengan aroma kayu manis yang menggugah selera.", image: "cinammon roll.jpeg", category: "Pastry", status: "active" },
+            { id: "9", name: "Butter Croissant", price: 25000, description: "Croissant renyah dengan butter premium, sempurna untuk sarapan.", image: "croisanct.jpeg", category: "Pastry", status: "active" },
+            { id: "10", name: "Fruit Danish", price: 28000, description: "Danish pastry dengan topping buah segar pilihan.", image: "danish.jpeg", category: "Pastry", status: "active" }
+        ];
 
-        const API_BASE = 'http://localhost:5000';
         let allProducts = [];
 
         // Hamburger Menu Toggle
@@ -169,29 +179,15 @@
             return 'Rp ' + price.toLocaleString('id-ID');
         }
 
-        // Load products from API
-        async function loadProducts() {
+        // Load products (static - no API needed)
+        function loadProducts() {
             const loadingEl = document.getElementById('catalogLoading');
-            const gridEl = document.getElementById('productGrid');
 
-            try {
-                const response = await fetch(`${API_BASE}/api/products`);
-                const data = await response.json();
+            // Use embedded static data
+            allProducts = PRODUCTS_DATA.filter(p => p.status === 'active');
 
-                allProducts = (data.products || data.data || []).filter(p => p.status === 'active');
-
-                loadingEl.style.display = 'none';
-                renderProducts(allProducts);
-            } catch (error) {
-                console.error('Error loading products:', error);
-                loadingEl.innerHTML = `
-                    <i class="fas fa-exclamation-circle" style="font-size: 3rem; color: var(--deep-pink); margin-bottom: 15px;"></i>
-                    <p>Gagal memuat produk. Pastikan server berjalan.</p>
-                    <button onclick="loadProducts()" class="btn btn-primary" style="margin-top: 15px;">
-                        <i class="fas fa-redo"></i> Coba Lagi
-                    </button>
-                `;
-            }
+            loadingEl.style.display = 'none';
+            renderProducts(allProducts);
         }
 
         // Render products to grid

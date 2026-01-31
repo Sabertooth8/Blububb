@@ -207,6 +207,32 @@
             "id": "BLB010",
             "date": "2026-01-31",
             "status": "pending"
+        },
+        {
+            "items": [
+                {
+                    "id": "1",
+                    "name": "Korean Strawberry",
+                    "price": 150000,
+                    "quantity": 1,
+                    "image": "cake-strawberry.png",
+                    "subtotal": 150000
+                }
+            ],
+            "total": 150000,
+            "customer": {
+                "nama": "Samuel ",
+                "whatsapp": "085217337124",
+                "alamat": "Jl. Adalah Pokoknya",
+                "tanggal": "2026-02-01",
+                "waktu": "siang",
+                "catatan": "Halo Sayangg",
+                "payment": "cod"
+            },
+            "payment_method": "cod",
+            "id": "BLB011",
+            "date": "2026-01-31",
+            "status": "pending"
         }
     ]
 }
