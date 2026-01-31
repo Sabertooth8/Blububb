@@ -98,6 +98,12 @@ ul {
     color: var(--pastel-blue);
 }
 
+.logo-img {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+}
+
 .nav-links {
     display: flex;
     gap: 30px;
