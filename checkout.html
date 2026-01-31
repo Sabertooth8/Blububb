@@ -31,8 +31,14 @@
                 <li><a href="index.html#testimoni">Testimoni</a></li>
                 <li><a href="index.html#contact" class="btn-nav">Order Now</a></li>
             </ul>
-            <div class="hamburger">
-                <i class="fas fa-bars"></i>
+            <div class="nav-actions">
+                <button class="cart-btn" id="cartToggle">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
+                </button>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
         </div>
     </nav>
@@ -40,54 +46,94 @@
     <!-- Checkout Section -->
     <section class="checkout-page">
         <div class="container">
-            <div class="section-header text-center" style="margin-bottom: 40px;">
-                <h1 style="font-size: 2.5rem; margin-bottom: 10px;">🛒 Checkout</h1>
-                <p style="color: var(--text-secondary);">Lengkapi data untuk melanjutkan pesanan</p>
+            <!-- Progress Steps -->
+            <div class="checkout-steps">
+                <div class="checkout-step active" id="step1Indicator">
+                    <span class="step-number">1</span>
+                    <span>Keranjang</span>
+                </div>
+                <div class="step-connector"></div>
+                <div class="checkout-step" id="step2Indicator">
+                    <span class="step-number">2</span>
+                    <span>Data Diri</span>
+                </div>
+                <div class="step-connector"></div>
+                <div class="checkout-step" id="step3Indicator">
+                    <span class="step-number">3</span>
+                    <span>Konfirmasi</span>
+                </div>
             </div>
 
-            <div class="checkout-container">
-                <!-- Order Summary -->
-                <div class="order-summary">
-                    <h2>📦 Ringkasan Pesanan</h2>
+            <!-- Step 1: Cart Summary -->
+            <div class="checkout-step-content" id="step1">
+                <div class="checkout-card">
+                    <h3>🛒 Ringkasan Pesanan</h3>
 
-                    <div class="order-item" id="orderItem">
-                        <img src="cake-strawberry.png" alt="Korean Strawberry" id="productImage">
-                        <div class="order-item-info">
-                            <h4 id="productName">Korean Strawberry</h4>
-                            <p class="qty">Qty: <span id="productQty">1</span></p>
-                            <p class="item-price" id="productPrice">Rp 150.000</p>
-                        </div>
+                    <!-- Empty Cart State -->
+                    <div class="checkout-empty" id="checkoutEmpty" style="display: none;">
+                        <i class="fas fa-shopping-bag"></i>
+                        <h4>Keranjang Kosong</h4>
+                        <p>Silakan tambahkan produk terlebih dahulu</p>
+                        <a href="catalog.html" class="btn btn-primary">
+                            <i class="fas fa-arrow-left"></i> Lihat Katalog
+                        </a>
                     </div>
 
-                    <div class="order-total">
-                        <span>Total</span>
-                        <span class="total-price" id="totalPrice">Rp 150.000</span>
+                    <!-- Cart Items -->
+                    <div class="checkout-items" id="checkoutItems"></div>
+
+                    <!-- Cart Total -->
+                    <div class="checkout-total" id="checkoutTotal" style="display: none;">
+                        <div class="total-row">
+                            <span>Subtotal</span>
+                            <span id="subtotalValue">Rp 0</span>
+                        </div>
+                        <div class="total-row final">
+                            <span>Total</span>
+                            <span id="totalValue">Rp 0</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Customer Form -->
-                <div class="customer-form">
-                    <h2>📋 Data Pemesan</h2>
+                <button class="btn btn-primary btn-next" id="toStep2" style="display: none;">
+                    Lanjut ke Data Diri <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
 
-                    <form id="checkoutForm">
+            <!-- Step 2: Customer Info -->
+            <div class="checkout-step-content" id="step2" style="display: none;">
+                <div class="checkout-card">
+                    <h3>📋 Data Pemesan</h3>
+                    <form id="customerForm">
                         <div class="form-group">
-                            <label for="nama">Nama Lengkap</label>
+                            <label for="nama">Nama Lengkap <span class="required">*</span></label>
                             <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="whatsapp">Nomor WhatsApp</label>
+                            <label for="whatsapp">Nomor WhatsApp <span class="required">*</span></label>
                             <input type="tel" id="whatsapp" name="whatsapp" placeholder="08xxxxxxxxxx" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="alamat">Alamat Pengambilan/Pengiriman</label>
-                            <input type="text" id="alamat" name="alamat" placeholder="Masukkan alamat lengkap" required>
+                            <label for="alamat">Alamat Pengambilan/Pengiriman <span class="required">*</span></label>
+                            <textarea id="alamat" name="alamat" rows="3" placeholder="Masukkan alamat lengkap"
+                                required></textarea>
                         </div>
 
-                        <div class="form-group">
-                            <label for="tanggal">Tanggal Ambil/Kirim</label>
-                            <input type="date" id="tanggal" name="tanggal" required>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tanggal">Tanggal Ambil/Kirim <span class="required">*</span></label>
+                                <input type="date" id="tanggal" name="tanggal" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="waktu">Waktu</label>
+                                <select id="waktu" name="waktu">
+                                    <option value="pagi">Pagi (08:00 - 12:00)</option>
+                                    <option value="siang">Siang (12:00 - 15:00)</option>
+                                    <option value="sore">Sore (15:00 - 18:00)</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -95,27 +141,85 @@
                             <input type="text" id="catatan" name="catatan"
                                 placeholder="Tulisan di kue, request khusus, dll">
                         </div>
-
-                        <button type="submit" class="btn-auth" style="background: #25D366;">
-                            <i class="fab fa-whatsapp"></i> Order via WhatsApp
-                        </button>
                     </form>
+                </div>
 
-                    <!-- Trust Badges -->
-                    <div class="trust-badges">
-                        <div class="trust-badge">
-                            <i class="fas fa-lock"></i>
-                            <span>Secure</span>
+                <div class="checkout-card">
+                    <h3>💳 Metode Pembayaran</h3>
+                    <div class="payment-methods">
+                        <div class="payment-option selected" data-method="transfer">
+                            <i class="fas fa-university"></i>
+                            <span>Transfer Bank</span>
                         </div>
-                        <div class="trust-badge">
-                            <i class="fas fa-star"></i>
-                            <span>Fresh</span>
+                        <div class="payment-option" data-method="cod">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>Bayar di Tempat</span>
                         </div>
-                        <div class="trust-badge">
-                            <i class="fas fa-rocket"></i>
-                            <span>Fast Response</span>
+                        <div class="payment-option" data-method="qris">
+                            <i class="fas fa-qrcode"></i>
+                            <span>QRIS</span>
                         </div>
                     </div>
+                </div>
+
+                <div class="checkout-nav">
+                    <button class="btn btn-secondary" id="backToStep1">
+                        <i class="fas fa-arrow-left"></i> Kembali
+                    </button>
+                    <button class="btn btn-primary" id="toStep3">
+                        Review Pesanan <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Confirmation -->
+            <div class="checkout-step-content" id="step3" style="display: none;">
+                <div class="checkout-card confirmation-card">
+                    <h3>✅ Konfirmasi Pesanan</h3>
+
+                    <div class="confirmation-section">
+                        <h4>📦 Pesanan</h4>
+                        <div id="confirmationItems"></div>
+                        <div class="confirmation-total">
+                            <span>Total Pembayaran</span>
+                            <span class="total-amount" id="confirmTotal">Rp 0</span>
+                        </div>
+                    </div>
+
+                    <div class="confirmation-section">
+                        <h4>👤 Data Pemesan</h4>
+                        <div class="confirmation-data" id="confirmCustomer"></div>
+                    </div>
+
+                    <div class="confirmation-section">
+                        <h4>💳 Pembayaran</h4>
+                        <div class="confirmation-data" id="confirmPayment"></div>
+                    </div>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="trust-badges-checkout">
+                    <div class="trust-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Aman</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-star"></i>
+                        <span>Fresh</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-bolt"></i>
+                        <span>Fast Response</span>
+                    </div>
+                </div>
+
+                <div class="checkout-nav">
+                    <button class="btn btn-secondary" id="backToStep2">
+                        <i class="fas fa-arrow-left"></i> Kembali
+                    </button>
+                    <button class="btn btn-whatsapp" id="submitOrder">
+                        <i class="fab fa-whatsapp"></i> Kirim Pesanan
+                    </button>
                 </div>
             </div>
         </div>
@@ -140,11 +244,44 @@
         </div>
     </footer>
 
+    <!-- Cart Drawer (hidden on checkout) -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-drawer-header">
+            <h2>🛒 Keranjang</h2>
+            <button class="cart-close" id="cartClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-empty" id="cartEmpty">
+            <i class="fas fa-shopping-bag"></i>
+            <h3>Keranjang Kosong</h3>
+            <p>Yuk, pilih kue favoritmu!</p>
+        </div>
+        <div class="cart-content" id="cartContent"></div>
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total-row">
+                <span>Total</span>
+                <span class="cart-total-price" id="cartTotal">Rp 0</span>
+            </div>
+            <a href="checkout.html" class="btn-checkout">
+                <i class="fas fa-credit-card"></i> Checkout Sekarang
+            </a>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
     <script>
+        // ==============================
+        // CHECKOUT PAGE FUNCTIONALITY
+        // ==============================
+
+        const API_BASE = 'http://localhost:5000';
+        let currentStep = 1;
+        let selectedPayment = 'transfer';
+        let orderData = {};
+
         // Hamburger Menu Toggle
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
-
         if (hamburger) {
             hamburger.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
@@ -152,73 +289,7 @@
             });
         }
 
-        // Product Data (will be connected to backend later)
-        const products = {
-            'korean-strawberry': {
-                name: 'Korean Strawberry',
-                price: 150000,
-                image: 'cake-strawberry.png'
-            },
-            'korean-fresh-cream': {
-                name: 'Korean Fresh Cream',
-                price: 145000,
-                image: 'korean-cake.jpeg'
-            },
-            'blueberry-cheese': {
-                name: 'Blueberry Cheese Cloud',
-                price: 160000,
-                image: 'cheese blueberry cloud.jpeg'
-            },
-            'peachy-creamy': {
-                name: 'Peachy Creamy Cake',
-                price: 140000,
-                image: 'crushed vanilla.jpeg'
-            },
-            'red-velvet': {
-                name: 'Red Velvet Kiss',
-                price: 155000,
-                image: 'velvet.jpeg'
-            },
-            'ice-cream-cake': {
-                name: 'Ice Cream Cake',
-                price: 75000,
-                image: 'ice-cream.jpeg'
-            },
-            'tiramisu-box': {
-                name: 'Tiramisu Box',
-                price: 85000,
-                image: 'tiramisu box.jpeg'
-            },
-            'cinnamon-roll': {
-                name: 'Cinnamon Roll',
-                price: 30000,
-                image: 'cinammon roll.jpeg'
-            },
-            'butter-croissant': {
-                name: 'Butter Croissant',
-                price: 25000,
-                image: 'croisanct.jpeg'
-            },
-            'fruit-danish': {
-                name: 'Fruit Danish',
-                price: 28000,
-                image: 'danish.jpeg'
-            }
-        };
-
-        // Get product from URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const productId = urlParams.get('product');
-
-        if (productId && products[productId]) {
-            const product = products[productId];
-            document.getElementById('productName').textContent = product.name;
-            document.getElementById('productPrice').textContent = formatPrice(product.price);
-            document.getElementById('totalPrice').textContent = formatPrice(product.price);
-            document.getElementById('productImage').src = product.image;
-            document.getElementById('productImage').alt = product.name;
-        }
-
+        // Format price
         function formatPrice(price) {
             return 'Rp ' + price.toLocaleString('id-ID');
         }
@@ -228,50 +299,525 @@
         tomorrow.setDate(tomorrow.getDate() + 1);
         document.getElementById('tanggal').min = tomorrow.toISOString().split('T')[0];
 
-        // Form submission - redirect to WhatsApp
-        document.getElementById('checkoutForm').addEventListener('submit', function (e) {
-            e.preventDefault();
+        // Load cart and render
+        function loadCartItems() {
+            const cart = CartManager.getCart();
+            const itemsContainer = document.getElementById('checkoutItems');
+            const emptyState = document.getElementById('checkoutEmpty');
+            const totalSection = document.getElementById('checkoutTotal');
+            const nextBtn = document.getElementById('toStep2');
 
-            const nama = document.getElementById('nama').value;
-            const whatsapp = document.getElementById('whatsapp').value;
-            const alamat = document.getElementById('alamat').value;
-            const tanggal = document.getElementById('tanggal').value;
-            const catatan = document.getElementById('catatan').value;
-            const productName = document.getElementById('productName').textContent;
-            const productPrice = document.getElementById('productPrice').textContent;
+            if (cart.items.length === 0) {
+                itemsContainer.innerHTML = '';
+                emptyState.style.display = 'flex';
+                totalSection.style.display = 'none';
+                nextBtn.style.display = 'none';
+                return;
+            }
 
-            // Format date
-            const formattedDate = new Date(tanggal).toLocaleDateString('id-ID', {
+            emptyState.style.display = 'none';
+            totalSection.style.display = 'block';
+            nextBtn.style.display = 'flex';
+
+            itemsContainer.innerHTML = cart.items.map(item => `
+                <div class="checkout-item">
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="checkout-item-info">
+                        <h4>${item.name}</h4>
+                        <p class="item-price">${formatPrice(item.price)}</p>
+                    </div>
+                    <div class="checkout-item-qty">
+                        <button class="qty-btn" onclick="updateQty('${item.id}', ${item.quantity - 1})">−</button>
+                        <span>${item.quantity}</span>
+                        <button class="qty-btn" onclick="updateQty('${item.id}', ${item.quantity + 1})">+</button>
+                    </div>
+                    <div class="checkout-item-subtotal">
+                        ${formatPrice(item.subtotal)}
+                    </div>
+                    <button class="remove-item" onclick="removeItem('${item.id}')">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            `).join('');
+
+            document.getElementById('subtotalValue').textContent = formatPrice(cart.total);
+            document.getElementById('totalValue').textContent = formatPrice(cart.total);
+        }
+
+        function updateQty(id, qty) {
+            CartManager.updateQty(id, qty);
+            loadCartItems();
+        }
+
+        function removeItem(id) {
+            CartManager.remove(id);
+            loadCartItems();
+        }
+
+        // Step navigation
+        function goToStep(step) {
+            currentStep = step;
+
+            // Hide all steps
+            document.querySelectorAll('.checkout-step-content').forEach(el => {
+                el.style.display = 'none';
+            });
+
+            // Show current step
+            document.getElementById(`step${step}`).style.display = 'block';
+
+            // Update indicators
+            document.querySelectorAll('.checkout-step').forEach((el, i) => {
+                el.classList.remove('active', 'completed');
+                if (i + 1 < step) {
+                    el.classList.add('completed');
+                } else if (i + 1 === step) {
+                    el.classList.add('active');
+                }
+            });
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Payment method selection
+        document.querySelectorAll('.payment-option').forEach(option => {
+            option.addEventListener('click', () => {
+                document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+                option.classList.add('selected');
+                selectedPayment = option.dataset.method;
+            });
+        });
+
+        // Navigation buttons
+        document.getElementById('toStep2').addEventListener('click', () => {
+            goToStep(2);
+        });
+
+        document.getElementById('backToStep1').addEventListener('click', () => {
+            goToStep(1);
+        });
+
+        document.getElementById('toStep3').addEventListener('click', () => {
+            // Validate form
+            const form = document.getElementById('customerForm');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            // Store order data
+            orderData = {
+                nama: document.getElementById('nama').value,
+                whatsapp: document.getElementById('whatsapp').value,
+                alamat: document.getElementById('alamat').value,
+                tanggal: document.getElementById('tanggal').value,
+                waktu: document.getElementById('waktu').value,
+                catatan: document.getElementById('catatan').value,
+                payment: selectedPayment
+            };
+
+            // Render confirmation
+            renderConfirmation();
+            goToStep(3);
+        });
+
+        document.getElementById('backToStep2').addEventListener('click', () => {
+            goToStep(2);
+        });
+
+        // Render confirmation
+        function renderConfirmation() {
+            const cart = CartManager.getCart();
+
+            // Items summary
+            document.getElementById('confirmationItems').innerHTML = cart.items.map(item => `
+                <div class="confirm-item">
+                    <span>${item.name} x${item.quantity}</span>
+                    <span>${formatPrice(item.subtotal)}</span>
+                </div>
+            `).join('');
+
+            document.getElementById('confirmTotal').textContent = formatPrice(cart.total);
+
+            // Customer data
+            const formattedDate = new Date(orderData.tanggal).toLocaleDateString('id-ID', {
                 weekday: 'long',
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
             });
 
+            const waktuLabels = {
+                pagi: 'Pagi (08:00 - 12:00)',
+                siang: 'Siang (12:00 - 15:00)',
+                sore: 'Sore (15:00 - 18:00)'
+            };
+
+            document.getElementById('confirmCustomer').innerHTML = `
+                <p><strong>Nama:</strong> ${orderData.nama}</p>
+                <p><strong>WhatsApp:</strong> ${orderData.whatsapp}</p>
+                <p><strong>Alamat:</strong> ${orderData.alamat}</p>
+                <p><strong>Tanggal:</strong> ${formattedDate}</p>
+                <p><strong>Waktu:</strong> ${waktuLabels[orderData.waktu]}</p>
+                ${orderData.catatan ? `<p><strong>Catatan:</strong> ${orderData.catatan}</p>` : ''}
+            `;
+
+            // Payment
+            const paymentLabels = {
+                transfer: 'Transfer Bank',
+                cod: 'Bayar di Tempat (COD)',
+                qris: 'QRIS'
+            };
+
+            document.getElementById('confirmPayment').innerHTML = `
+                <p>${paymentLabels[orderData.payment]}</p>
+            `;
+        }
+
+        // Submit order
+        document.getElementById('submitOrder').addEventListener('click', async () => {
+            const cart = CartManager.getCart();
+
+            // Save transaction to backend
+            try {
+                await fetch(`${API_BASE}/api/transactions`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        items: cart.items,
+                        total: cart.total,
+                        customer: orderData,
+                        payment_method: orderData.payment
+                    })
+                });
+            } catch (error) {
+                console.log('Backend not available, continuing with WhatsApp');
+            }
+
             // Create WhatsApp message
+            const formattedDate = new Date(orderData.tanggal).toLocaleDateString('id-ID', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
             let message = `🎂 *ORDER BLUBUBB*\n\n`;
-            message += `*Produk:* ${productName}\n`;
-            message += `*Harga:* ${productPrice}\n\n`;
+            message += `*Pesanan:*\n`;
+            cart.items.forEach(item => {
+                message += `• ${item.name} x${item.quantity} = ${formatPrice(item.subtotal)}\n`;
+            });
+            message += `\n*Total: ${formatPrice(cart.total)}*\n\n`;
             message += `*Data Pemesan:*\n`;
-            message += `Nama: ${nama}\n`;
-            message += `WhatsApp: ${whatsapp}\n`;
-            message += `Alamat: ${alamat}\n`;
+            message += `Nama: ${orderData.nama}\n`;
+            message += `WhatsApp: ${orderData.whatsapp}\n`;
+            message += `Alamat: ${orderData.alamat}\n`;
             message += `Tanggal: ${formattedDate}\n`;
-            if (catatan) {
-                message += `Catatan: ${catatan}\n`;
+            message += `Pembayaran: ${orderData.payment === 'transfer' ? 'Transfer Bank' : orderData.payment === 'cod' ? 'COD' : 'QRIS'}\n`;
+            if (orderData.catatan) {
+                message += `Catatan: ${orderData.catatan}\n`;
             }
             message += `\nTerima kasih sudah order di Blububb! 💕`;
 
-            // Encode message for URL
-            const encodedMessage = encodeURIComponent(message);
+            // Clear cart
+            CartManager.clear();
 
-            // Replace with actual WhatsApp number
-            const waNumber = '6281234567890'; // Replace with actual number
-            const waURL = `https://wa.me/${waNumber}?text=${encodedMessage}`;
-
+            // Redirect to WhatsApp
+            const waNumber = '6282181081501'; // Blububb WhatsApp
+            const waURL = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
             window.open(waURL, '_blank');
+
+            // Show success (optional: redirect to confirmation page)
+            alert('Pesanan berhasil dikirim! Silakan lanjutkan di WhatsApp.');
+            window.location.href = 'index.html';
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCartItems();
         });
     </script>
+
+    <style>
+        /* Checkout-specific styles */
+        .checkout-page {
+            padding-top: 120px;
+            padding-bottom: 60px;
+            min-height: 100vh;
+            background: var(--bg-cream);
+        }
+
+        .checkout-step-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .checkout-empty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+            color: var(--text-secondary);
+        }
+
+        .checkout-empty i {
+            font-size: 4rem;
+            color: var(--soft-pink);
+            margin-bottom: 20px;
+            opacity: 0.6;
+        }
+
+        .checkout-empty h4 {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .checkout-empty p {
+            margin-bottom: 20px;
+        }
+
+        .checkout-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: var(--bg-cream);
+            border-radius: 16px;
+            margin-bottom: 12px;
+        }
+
+        .checkout-item img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .checkout-item-info {
+            flex: 1;
+        }
+
+        .checkout-item-info h4 {
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .checkout-item-info .item-price {
+            color: var(--deep-pink);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .checkout-item-qty {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkout-item-subtotal {
+            font-weight: 700;
+            color: var(--text-primary);
+            min-width: 100px;
+            text-align: right;
+        }
+
+        .remove-item {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 8px;
+            opacity: 0.5;
+            transition: all 0.2s;
+        }
+
+        .remove-item:hover {
+            opacity: 1;
+            color: #e74c3c;
+        }
+
+        .checkout-total {
+            border-top: 2px solid var(--bg-cream);
+            padding-top: 20px;
+            margin-top: 10px;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        .total-row.final {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--deep-pink);
+            padding-top: 10px;
+            border-top: 1px dashed var(--soft-pink);
+        }
+
+        .btn-next {
+            width: 100%;
+            margin-top: 20px;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-group .required {
+            color: var(--deep-pink);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--soft-pink);
+            box-shadow: 0 0 0 4px rgba(255, 196, 214, 0.2);
+        }
+
+        .checkout-nav {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .checkout-nav .btn {
+            flex: 1;
+            justify-content: center;
+        }
+
+        /* Confirmation styles */
+        .confirmation-section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .confirmation-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .confirmation-section h4 {
+            font-size: 1rem;
+            color: var(--deep-pink);
+            margin-bottom: 15px;
+        }
+
+        .confirm-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            color: var(--text-secondary);
+        }
+
+        .confirmation-total {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 15px;
+            margin-top: 10px;
+            border-top: 1px dashed var(--soft-pink);
+        }
+
+        .confirmation-total .total-amount {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--deep-pink);
+        }
+
+        .confirmation-data p {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        .confirmation-data strong {
+            color: var(--text-primary);
+        }
+
+        .trust-badges-checkout {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 25px;
+            background: white;
+            border-radius: 20px;
+            margin: 20px 0;
+        }
+
+        .trust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+        }
+
+        .trust-item i {
+            font-size: 1.5rem;
+            color: var(--deep-pink);
+        }
+
+        .trust-item span {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .checkout-item {
+                flex-wrap: wrap;
+            }
+
+            .checkout-item-subtotal {
+                width: 100%;
+                text-align: left;
+                padding-top: 10px;
+            }
+
+            .checkout-nav {
+                flex-direction: column;
+            }
+
+            .trust-badges-checkout {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
 </body>
 
 </html>

@@ -48,11 +48,18 @@
                 <li><a href="#testimoni">Testimoni</a></li>
                 <li><a href="#contact" class="btn-nav">Order Now</a></li>
             </ul>
-            <div class="hamburger">
-                <i class="fas fa-bars"></i>
+            <div class="nav-actions">
+                <button class="cart-btn" id="cartToggle">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
+                </button>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
         </div>
     </nav>
+
 
     <!-- Hero Section -->
     <header id="home" class="hero">
@@ -376,6 +383,42 @@
         </div>
     </footer>
 
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-drawer-header">
+            <h2>🛒 Keranjang</h2>
+            <button class="cart-close" id="cartClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Empty State -->
+        <div class="cart-empty" id="cartEmpty">
+            <i class="fas fa-shopping-bag"></i>
+            <h3>Keranjang Kosong</h3>
+            <p>Yuk, pilih kue favoritmu!</p>
+        </div>
+
+        <!-- Cart Items -->
+        <div class="cart-content" id="cartContent"></div>
+
+        <!-- Cart Footer -->
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total-row">
+                <span>Total</span>
+                <span class="cart-total-price" id="cartTotal">Rp 0</span>
+            </div>
+            <a href="checkout.html" class="btn-checkout">
+                <i class="fas fa-credit-card"></i>
+                Checkout Sekarang
+            </a>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
     <script src="script.js"></script>
 </body>
 

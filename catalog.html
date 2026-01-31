@@ -32,8 +32,14 @@
                 <li><a href="index.html#testimoni">Testimoni</a></li>
                 <li><a href="index.html#contact" class="btn-nav">Order Now</a></li>
             </ul>
-            <div class="hamburger">
-                <i class="fas fa-bars"></i>
+            <div class="nav-actions">
+                <button class="cart-btn" id="cartToggle">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
+                </button>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
         </div>
     </nav>
@@ -46,143 +52,29 @@
         </div>
     </section>
 
+    <!-- Category Filter -->
+    <section class="section" style="padding-top: 30px; padding-bottom: 0;">
+        <div class="container">
+            <div class="category-filter" id="categoryFilter">
+                <button class="filter-btn active" data-category="all">Semua</button>
+                <button class="filter-btn" data-category="Cake">🎂 Cake</button>
+                <button class="filter-btn" data-category="Pastry">🥐 Pastry</button>
+                <button class="filter-btn" data-category="Dessert">🍮 Dessert</button>
+            </div>
+        </div>
+    </section>
+
     <!-- Catalog Grid -->
     <section class="section">
         <div class="container">
+            <!-- Loading State -->
+            <div class="catalog-loading" id="catalogLoading">
+                <div class="loading-spinner"></div>
+                <p>Memuat produk...</p>
+            </div>
+
             <div class="catalog-grid" id="productGrid">
                 <!-- Products will be loaded dynamically -->
-
-                <!-- Static Products for Demo -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="cake-strawberry.png" alt="Korean Strawberry">
-                    </div>
-                    <div class="product-info">
-                        <h3>Korean Strawberry</h3>
-                        <p class="price">Rp 150.000</p>
-                        <a href="checkout.html?product=korean-strawberry" class="btn-order">
-                            <i class="fas fa-shopping-bag"></i> Order
-                        </a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="korean-cake.jpeg" alt="Korean Fresh Cream">
-                    </div>
-                    <div class="product-info">
-                        <h3>Korean Fresh Cream</h3>
-                        <p class="price">Rp 145.000</p>
-                        <a href="checkout.html?product=korean-fresh-cream" class="btn-order">
-                            <i class="fas fa-shopping-bag"></i> Order
-                        </a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="cheese blueberry cloud.jpeg" alt="Blueberry Cheese Cloud">
-                    </div>
-                    <div class="product-info">
-                        <h3>Blueberry Cheese Cloud</h3>
-                        <p class="price">Rp 160.000</p>
-                        <a href="checkout.html?product=blueberry-cheese" class="btn-order">
-                            <i class="fas fa-shopping-bag"></i> Order
-                        </a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="crushed vanilla.jpeg" alt="Peachy Creamy Cake">
-                    </div>
-                    <div class="product-info">
-                        <h3>Peachy Creamy Cake</h3>
-                        <p class="price">Rp 140.000</p>
-                        <a href="checkout.html?product=peachy-creamy" class="btn-order">
-                            <i class="fas fa-shopping-bag"></i> Order
-                        </a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="velvet.jpeg" alt="Red Velvet Kiss">
-                    </div>
-                    <div class="product-info">
-                        <h3>Red Velvet Kiss</h3>
-                        <p class="price">Rp 155.000</p>
-                        <a href="checkout.html?product=red-velvet" class="btn-order">
-                            <i class="fas fa-shopping-bag"></i> Order
-                        </a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="ice-cream.jpeg" alt="Ice Cream Cake">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ice Cream Cake</h3>
-                        <p class="price">Rp 75.000</p>
-                        <a href="checkout.html?product=ice-cream-cake" class="btn-order">
-                            <i class="fas fa-shopping-bag"></i> Order
-                        </a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="tiramisu box.jpeg" alt="Tiramisu Box">
-                    </div>
-                    <div class="product-info">
-                        <h3>Tiramisu Box</h3>
-                        <p class="price">Rp 85.000</p>
-                        <a href="checkout.html?product=tiramisu-box" class="btn-order">
-                            <i class="fas fa-shopping-bag"></i> Order
-                        </a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="cinammon roll.jpeg" alt="Cinnamon Roll">
-                    </div>
-                    <div class="product-info">
-                        <h3>Cinnamon Roll</h3>
-                        <p class="price">Rp 30.000</p>
-                        <a href="checkout.html?product=cinnamon-roll" class="btn-order">
-                            <i class="fas fa-shopping-bag"></i> Order
-                        </a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="croisanct.jpeg" alt="Butter Croissant">
-                    </div>
-                    <div class="product-info">
-                        <h3>Butter Croissant</h3>
-                        <p class="price">Rp 25.000</p>
-                        <a href="checkout.html?product=butter-croissant" class="btn-order">
-                            <i class="fas fa-shopping-bag"></i> Order
-                        </a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="danish.jpeg" alt="Fruit Danish">
-                    </div>
-                    <div class="product-info">
-                        <h3>Fruit Danish</h3>
-                        <p class="price">Rp 28.000</p>
-                        <a href="checkout.html?product=fruit-danish" class="btn-order">
-                            <i class="fas fa-shopping-bag"></i> Order
-                        </a>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -217,7 +109,50 @@
         </div>
     </footer>
 
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-drawer-header">
+            <h2>🛒 Keranjang</h2>
+            <button class="cart-close" id="cartClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Empty State -->
+        <div class="cart-empty" id="cartEmpty">
+            <i class="fas fa-shopping-bag"></i>
+            <h3>Keranjang Kosong</h3>
+            <p>Yuk, pilih kue favoritmu!</p>
+        </div>
+
+        <!-- Cart Items -->
+        <div class="cart-content" id="cartContent"></div>
+
+        <!-- Cart Footer -->
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total-row">
+                <span>Total</span>
+                <span class="cart-total-price" id="cartTotal">Rp 0</span>
+            </div>
+            <a href="checkout.html" class="btn-checkout">
+                <i class="fas fa-credit-card"></i>
+                Checkout Sekarang
+            </a>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
     <script>
+        // ==============================
+        // CATALOG PAGE FUNCTIONALITY
+        // ==============================
+
+        const API_BASE = 'http://localhost:5000';
+        let allProducts = [];
+
         // Hamburger Menu Toggle
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
@@ -229,32 +164,263 @@
             });
         }
 
-        // Animate products on scroll
-        const productCards = document.querySelectorAll('.product-card');
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: "0px"
-        };
+        // Format price
+        function formatPrice(price) {
+            return 'Rp ' + price.toLocaleString('id-ID');
+        }
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = "1";
-                        entry.target.style.transform = "translateY(0)";
-                    }, index * 100);
-                    observer.unobserve(entry.target);
+        // Load products from API
+        async function loadProducts() {
+            const loadingEl = document.getElementById('catalogLoading');
+            const gridEl = document.getElementById('productGrid');
+
+            try {
+                const response = await fetch(`${API_BASE}/api/products`);
+                const data = await response.json();
+
+                allProducts = (data.products || data.data || []).filter(p => p.status === 'active');
+
+                loadingEl.style.display = 'none';
+                renderProducts(allProducts);
+            } catch (error) {
+                console.error('Error loading products:', error);
+                loadingEl.innerHTML = `
+                    <i class="fas fa-exclamation-circle" style="font-size: 3rem; color: var(--deep-pink); margin-bottom: 15px;"></i>
+                    <p>Gagal memuat produk. Pastikan server berjalan.</p>
+                    <button onclick="loadProducts()" class="btn btn-primary" style="margin-top: 15px;">
+                        <i class="fas fa-redo"></i> Coba Lagi
+                    </button>
+                `;
+            }
+        }
+
+        // Render products to grid
+        function renderProducts(products) {
+            const gridEl = document.getElementById('productGrid');
+
+            if (products.length === 0) {
+                gridEl.innerHTML = `
+                    <div class="no-products">
+                        <i class="fas fa-box-open"></i>
+                        <p>Tidak ada produk ditemukan</p>
+                    </div>
+                `;
+                return;
+            }
+
+            gridEl.innerHTML = products.map(product => `
+                <div class="product-card" data-category="${product.category}">
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p class="product-desc">${product.description || ''}</p>
+                        <p class="price">${formatPrice(product.price)}</p>
+                        <button class="btn-add-cart" onclick="addToCart('${product.id}', '${product.name}', ${product.price}, '${product.image}')">
+                            <i class="fas fa-cart-plus"></i> Tambah
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Animate cards on scroll
+            animateCards();
+        }
+
+        // Add to cart function
+        function addToCart(id, name, price, image) {
+            CartManager.add({
+                id: id,
+                name: name,
+                price: price,
+                image: image
+            });
+        }
+
+        // Category filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Filter products
+                const category = btn.dataset.category;
+                if (category === 'all') {
+                    renderProducts(allProducts);
+                } else {
+                    const filtered = allProducts.filter(p => p.category === category);
+                    renderProducts(filtered);
                 }
             });
-        }, observerOptions);
+        });
 
-        productCards.forEach(card => {
-            card.style.opacity = "0";
-            card.style.transform = "translateY(30px)";
-            card.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
-            observer.observe(card);
+        // Animate products on scroll
+        function animateCards() {
+            const productCards = document.querySelectorAll('.product-card');
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: "0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = "1";
+                            entry.target.style.transform = "translateY(0)";
+                        }, index * 80);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            productCards.forEach(card => {
+                card.style.opacity = "0";
+                card.style.transform = "translateY(30px)";
+                card.style.transition = "opacity 0.5s ease-out, transform 0.5s ease-out";
+                observer.observe(card);
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProducts();
         });
     </script>
+
+    <style>
+        /* Catalog-specific styles */
+        .catalog-loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--soft-pink);
+            border-top-color: var(--deep-pink);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            border: 2px solid var(--soft-pink);
+            background: white;
+            border-radius: 50px;
+            font-weight: 500;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--text-primary);
+        }
+
+        .filter-btn:hover {
+            border-color: var(--deep-pink);
+            color: var(--deep-pink);
+        }
+
+        .filter-btn.active {
+            background: var(--deep-pink);
+            border-color: var(--deep-pink);
+            color: white;
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(227, 139, 158, 0.2);
+        }
+
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+            background: var(--bg-cream);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.08);
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .product-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-info .price {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .no-products {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+
+        .no-products i {
+            font-size: 3rem;
+            color: var(--soft-pink);
+            margin-bottom: 15px;
+        }
+    </style>
 </body>
 
 </html>
