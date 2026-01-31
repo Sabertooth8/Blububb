@@ -1,0 +1,12 @@
+[build]
+  publish = "."
+  command = "echo 'Deploying static frontend only'"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Note: The Python backend and Admin Panel functionality (Login/CRUD) 
+# will NOT work on Netlify because it cannot run Python servers.
+# Only the static frontend (Index, Catalog, Checkout) will be visible.
